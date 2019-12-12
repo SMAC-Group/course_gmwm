@@ -32,4 +32,4 @@ Notes: Some more notes go here
 
 # Let's practice!
 
-Notes: This course will cover some notions of IMU calibration and specific time series challenges.
+Notes: test101
