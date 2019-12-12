@@ -24,7 +24,7 @@ Hello world
   elements.
 - This is another bullet point.
 
-<img src="profile.jpg" alt="This image is in /static" width="25%">
+<img src="sguerrier.jpg" alt="This image is in /static" width="25%">
 
 Notes: Some more notes go here
 
