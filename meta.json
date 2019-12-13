@@ -17,7 +17,7 @@
     },
     "showProfileImage": true,
     "footerLinks": [
-        { "text": "Website", "url": "https://spacy.io" },
+        { "text": "Website", "url": "https://data-analytics-lab.net/" },
         { "text": "Source", "url": "https://github.com/SMAC-Group/course_smac_epfl" },
         { "text": "Built with ♥", "url": "https://github.com/ines/course-starter-r" }
     ],
