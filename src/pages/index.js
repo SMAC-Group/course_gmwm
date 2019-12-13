@@ -24,7 +24,7 @@ export default ({ data }) => {
                 Hello! Welcome to this course.
                 </p>
                 <p>
-                    To take this course, you need ...
+                To take this course, you need ...
                 </p>
                 </div>
             </section>
