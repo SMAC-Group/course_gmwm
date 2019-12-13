@@ -18,7 +18,7 @@ id: 1
 
 <exercise id="2" title="Getting Started">
 
-Let's ask some questions about the slides. Whats the correct answer?
+Let's ask some questions about the slides. Whats the correct answer? Test 101
 
 <choice>
 <opt text="Answer one">
