@@ -23,9 +23,6 @@ export default ({ data }) => {
                 <p>
                 Hello! Welcome to this course.
                 </p>
-                <p>
-                To take this course, you need ...
-                </p>
                 </div>
             </section>
             {chapters.map(({ slug, title, description }) => (
