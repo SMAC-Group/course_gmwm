@@ -21,10 +21,10 @@ export default ({ data }) => {
                 <h1 className={classes.subtitle}>Introduction to Inertial Sensor Stochastic Calibration</h1>
                 <div className={classes.introduction}>
                 <p>
-                Hello! Welcome to Generalized Additive Models in R.  This short course will teach you how to use these flexible, powerful tools to model data and solve data science problems. GAMs offer offer a middle ground between simple linear models and complex machine-learning techniques, allowing you to model and understand complex systems.
+                Hello! Welcome to this course.
                 </p>
                 <p>
-                    To take this course, you need basic R programming skills and experience with linear regression. Now let's get started!
+                    To take this course, you need ...
                 </p>
                 </div>
             </section>
