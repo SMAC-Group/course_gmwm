@@ -18,11 +18,8 @@ export default ({ data }) => {
         <Layout isHome>
             <Logo className={classes.logo} aria-label={siteMetadata.title} />
             <section>
+                <div align="center">
                 <h1 className={classes.subtitle}>Introduction to Inertial Sensor Stochastic Calibration</h1>
-                <div className={classes.introduction}>
-                <p>
-                Hello! Welcome to this course.
-                </p>
                 </div>
             </section>
             {chapters.map(({ slug, title, description }) => (
