@@ -18,7 +18,7 @@ export default ({ data }) => {
         <Layout isHome>
             <Logo className={classes.logo} aria-label={siteMetadata.title} />
             <section>
-                <h1 className={classes.subtitle}>A Free, Interactive Course using <strong>mgcv</strong></h1>
+                <h1 className={classes.subtitle}>Introduction to Inertial Sensor Stochastic Calibration</h1>
                 <div className={classes.introduction}>
                 <p>
                 Hello! Welcome to Generalized Additive Models in R.  This short course will teach you how to use these flexible, powerful tools to model data and solve data science problems. GAMs offer offer a middle ground between simple linear models and complex machine-learning techniques, allowing you to model and understand complex systems.
