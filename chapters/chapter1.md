@@ -44,7 +44,18 @@ This is not correct either.
 
 <exercise id="3" title="First steps">
 
-This is a code exercise. The content can be formatted in simple Markdown – so
+This is a code exercise. 
+
+# test.
+We consider the AV at dyadic scales ($\tau_j$) starting from local averages of the process which can be denoted as
+    
+$$
+    \bar{X}_{t}^{(j)} \equiv \frac{1}{\tau_j} \sum_{i = 1}^{\tau_j} X_{t - \tau_j + i}\, ,
+$$
+
+# end test
+
+The content can be formatted in simple Markdown – so
 you can have **bold text**, `code` or [links](https://spacy.io) or lists, like
 the one for the instructions below.
 
