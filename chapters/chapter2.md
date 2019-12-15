@@ -21,7 +21,7 @@ install.packages("simts")
 devtools::install_github("SMAC-Group/simts")
 ```
 
-The sildes we will can be downloaded [here](https://www.google.com). 
+The sildes we will can be downloaded [here](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap2.pdf). 
 
 Main references:
 
