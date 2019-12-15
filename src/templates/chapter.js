@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { graphql, navigate } from 'gatsby'
 import useLocalStorage from '@illinois/react-use-local-storage'
@@ -8,7 +9,8 @@ import Layout from '../components/layout'
 import { Button } from '../components/button'
 
 import classes from '../styles/chapter.module.sass'
-import "katex/dist/katex.min.css"
+
+require("katex/dist/katex.min.css")
 
 const Template = ({ data }) => {
     const { markdownRemark, site } = data

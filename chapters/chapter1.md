@@ -47,10 +47,10 @@ This is not correct either.
 This is a code exercise. 
 
 # test.
-We consider the AV at dyadic scales ($\tau_j$) starting from local averages of the process which can be denoted as
+We consider the AV at dyadic scales ($a^2 + b^2 = c^2$) starting from local averages of the process which can be denoted as
     
 $$
-    \bar{X}_{t}^{(j)} \equiv \frac{1}{\tau_j} \sum_{i = 1}^{\tau_j} X_{t - \tau_j + i}\, ,
+a^2 + b^2 = c^2
 $$
 
 # end test

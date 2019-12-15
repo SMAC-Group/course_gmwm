@@ -6,6 +6,7 @@ import { ChapterContext } from '../context'
 import IconSlides from '../../static/icon_slides.svg'
 import classes from '../styles/exercise.module.sass'
 
+
 const Exercise = ({ id, title, type, children }) => {
     const excRef = useRef()
     const excId = parseInt(id)

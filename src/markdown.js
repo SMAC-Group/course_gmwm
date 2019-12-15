@@ -7,6 +7,7 @@ import { Link } from './components/link'
 import Slides from './components/slides'
 import Choice, { Option } from './components/choice'
 import { H3, Hr, Ol, Ul, Li, InlineCode } from './components/typography'
+require(`katex/dist/katex.min.css`)
 
 export const renderAst = new rehypeReact({
     createElement: React.createElement,
