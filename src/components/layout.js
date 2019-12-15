@@ -55,14 +55,31 @@ const Layout = ({ isHome, title, description, children }) => {
                             </div>
 
                             <footer className={classes.footer}>
+                            
+                            <div align="center">
+                            <H3>About the instructors</H3>
+                            </div>
                                 <div className={classes.footerContent}>
                                     <section className={classes.footerSection}>
-                                        <H3>About this course</H3>
-                                        <p>{meta.description}</p>
+                                        {meta.showProfileImage && (
+                                            <img
+                                                src="/jan_skaloud.png"
+                                                alt=""
+                                                className={classes.profile}
+                                            />
+                                        )}
+
+                                        
+                                        <p> 
+                                        Jan Skaloud is a Senior Scientist, member of the Geodetic Engineering Laboratory - EPFL
+                                        </p>
+                                            
                                     </section>
+                                    
+                                    
 
                                     <section className={classes.footerSection}>
-                                        <H3>About me</H3>
+                                    
                                         {meta.showProfileImage && (
                                             <img
                                                 src="/profile.jpg"
