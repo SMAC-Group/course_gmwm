@@ -8,6 +8,7 @@ import Layout from '../components/layout'
 import { Button } from '../components/button'
 
 import classes from '../styles/chapter.module.sass'
+import "katex/dist/katex.min.css"
 
 const Template = ({ data }) => {
     const { markdownRemark, site } = data
