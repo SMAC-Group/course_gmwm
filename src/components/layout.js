@@ -63,7 +63,7 @@ const Layout = ({ isHome, title, description, children }) => {
                                     <section className={classes.footerSection}>
                                         {meta.showProfileImage && (
                                             <img
-                                                src="/jan_skaloud.jpg"
+                                                src="/jan_skaloud.png"
                                                 alt=""
                                                 className={classes.profile}
                                             />
