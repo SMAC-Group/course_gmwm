@@ -314,7 +314,7 @@ As can be seen on the plot, the black line representing the above described rati
 
 Let us finally investigate the importance of robust ACF estimation on some real data. We consider the data on monthly precipitation (`hydro`) presented in the previous chapter. This data is measured over 65 years (between 1907 and 1972) and is an example of data that is used to determine the behaviour of a water cycle. More specifically, precipitation is often considered the starting point for the analysis of a water cycle and, based on its behaviour, the rest of the water cycle is determined based on other variables. Therefore, a correct analysis of precipitation is extremely important to correctly define the behaviour of the water cycle passing through run-off and groundwater formation to evaporation and condensation. Given this, let us now take a look at the classic autocorrelation plot of this data.
 
-```{r}
+```{r chap2_acf}
 # Load hydro dataset
 data("hydro")
 # Define the time series as a gts object
@@ -326,14 +326,14 @@ plot(auto_corr(hydro))
 
 Based on this ACF plot, one would probably conclude that (counterintuitively) there does not appear to be any significant form of correlation between lagged observations in the data. From a hydrological point of view, one would therefore assume an uncorrelated model for precipitation (i.e. white noise) and, based on this, model the rest of the water cycle. However, let us take a look at the robust ACF plot.
 
-```{r}
+```{r chap2_robacf}
 # Plot the Robust ACF
 plot(auto_corr(hydro, robust = TRUE))
 ```
 
 If we analyse this output, the conclusion appears to be extremely different and, in some way, makes more sense from a hydrological point of view (i.e. the amount of precipitation between close months and over specific months is correlated). Indeed, we can see that there appears to be a seasonal correlation ("waves" in the ACF plot) and that close months appear to be correlated between them. To better highlight this difference (whci can lead to different conclusions) let us finally compare the plots.
 
-```{r}
+```{r chap2_compareacf, fig.height = 5, fig.width = 11}
 # Compare classic and robust ACF
 compare_acf(hydro)
 ```

@@ -1,0 +1,35 @@
+---
+title: "Lab4"
+output: html_document
+---
+
+```{r chap4_plot_avar, fig.height = 5, fig.width = 6.5, cache = TRUE}
+library(avar)
+library(simts)
+
+# Simulate data
+n = 5*10^5
+sigma2 = 0.01
+gamma2 = 1e-08
+model = WN(sigma2 = sigma2) + RW(gamma2 = gamma2)
+Xt = gen_gts(n = n, model = model)
+
+# Compute the Maximum-Overlap Allan Variance
+allan_variance = avar(Xt, type = "mo")
+
+# Log-Log representation of the Allan Variance
+plot(allan_variance)
+```
+
+Suppose we wish to use the first 8 scales to estimate the WN and the last 5 for the RW. Visually, this can be represented as follows:
+
+```{r chap4_plot_avar_with_scales, fig.height = 5, fig.width = 6.5, cache = TRUE}
+# Log-Log representation of the Allan Variance
+plot(allan_variance)
+
+# Add colors for the scales
+wn_scales = 1:8
+rw_sclaes = 13:17
+points(allan_variance$levels[wn_scales], sqrt(allan_variance$allan[wn_scales]), col = "red", pch = 16, cex= 2)
+```
+
