@@ -1,0 +1,350 @@
+---
+title: "Lab - Chapter 2"
+output: html_document
+---
+
+# References
+
+- Applied Time Series Analysis with `R`, Guerrier, *et al.* 2019, online version: http://ts.smac-group.com.
+
+# Installing `simts`
+
+```{r, eval=FALSE}
+install.packages("simts")
+```
+
+# Plotting time series
+
+The `simts` has plenty of example time series. For example, we consider here a data set coming from the domain of hydrology. The data concerns monthly precipitation (in *mm*) over a certain period of time (1907 to 1972) and is interesting for scientists in order to study water cycles. The data are presented in the graph below:
+
+```{r}
+# Loading simts
+library(simts)
+
+# Load hydro dataset
+data("hydro")
+
+# Simulate based on data
+hydro = gts(as.vector(hydro), start = 1907, freq = 12, unit_ts = "in.", 
+            name_ts = "Precipitation", data_name = "Hydrology data")
+
+# Plot hydro 
+plot(hydro)
+```
+
+Let us consider the limitations of a direct graphical representation of a time series when the sample size is large. Indeed, due to visual limitations, a direct plotting of the data will probably result in an uninformative aggregation of points between which it is unable to distinguish anything. For example, we consider here the data coming from the calibration procedure of an Inertial Measurement Unit (IMU) which, in general terms, is used to enhance navigation precision or reconstruct three dimensional movements. These sensors are used in a very wide range of applications such as robotics, virtual reality, vehicle stability control, human and animal motion capture and so forth. The signals coming from these instruments are measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. The code below retrieves some data from an IMU and plots it directly. First, we install the `imudata` which is hosted on GitHub:
+
+```{r, eval=FALSE}
+# Install imudata R package (this may take a few minutes)
+devtools::install_github("SMAC-Group/imudata")
+```
+
+Next, we plot the time series:
+
+```{r, cache=TRUE}
+# Load IMU data
+data(imu6, package = "imudata")
+
+# Construct gst object
+Xt = gts(imu6[,1], data_name = "Gyroscope data", unit_time = "hour", 
+         freq = 100*60*60, name_ts = "Angular rate", 
+         unit_ts = bquote(rad^2/s^2))
+
+# Plot time series
+plot(Xt)
+```
+
+# Simulating time series
+
+Time series can easily be simulated with `simts`. For example, to simulate an White Noise (WN) with variance $\sigma^2 = 1$:
+
+```{r chap2_simuWN}
+n = 1000                               # process length
+sigma2 = 1                             # process variance
+Xt = gen_gts(n, WN(sigma2 = sigma2))
+plot(Xt)
+```
+
+Similarly, for a random walk (RW):
+
+```{r chap2_simuRW}
+n = 1000                               # process length
+gamma2 = 1                             # process variance
+Xt = gen_gts(n, RW(gamma2 = gamma2))
+plot(Xt)
+```
+
+Composite stochastic processes can also be simulated. For example, the model WN + RW + DR can be simulated as follows:
+
+```{r chap2_simu_composite, fig.height = 10, fig.width = 7}
+set.seed(18)                            # seed for reproducibility
+n = 1000                                # process length
+delta = 0.005                           # delta parameter (drift)
+sigma2 = 10                             # variance parameter (white noise)
+gamma2 = 0.1                            # innovation variance (random walk)
+model = WN(sigma2 = sigma2) + RW(gamma2 = gamma2) + DR(omega = delta)
+Xt = gen_lts(n = n, model = model)
+plot(Xt)
+```
+
+Equivalently, composite stochastic processes can also be simulated with plotting (and returning) the latent processes as follos:
+
+```{r chap2_simu_composite2}
+set.seed(18)           
+Xt = gen_gts(n = n, model = model)
+plot(Xt)
+```
+
+# Autocorrelation
+
+It is possible to plot the *theoretical* ACF of most time series with `simts`. For example, for an AR(1) we have
+
+```{r AR1theoACF, cache = TRUE, echo = TRUE, fig.cap = "Comparison of theoretical ACF of AR(1) with different parameter values", fig.align='center', fig.height = 8, fig.width = 10}
+par(mfrow=c(2,2))
+plot(theo_acf(ar = 0.9, ma = NULL), 
+     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.9")))
+plot(theo_acf(ar = 0.5, ma = NULL),
+     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.5")))
+plot(theo_acf(ar = -0.9, ma = NULL), 
+     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = -0.9")))
+plot(theo_acf(ar = 0.1, ma = NULL), 
+     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.1")))
+```
+
+The theoretical ACF of a process can also be compared with the empirical ACF. For example
+
+```{r AR1acfcomp, cache = TRUE, echo = TRUE, fig.cap = "Comparison between theoretical and empirical ACF for an AR(1) process", fig.align='center', fig.height = 8, fig.width = 10}
+par(mfrow=c(2,2))
+plot(theo_acf(ar = 0.9, ma = NULL), 
+     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.9")))
+
+Xt = gen_gts(n = 50, model = AR1(phi = 0.9, sigma2 = 1))
+plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 50")
+
+Xt = gen_gts(n = 500, model = AR1(phi = 0.9, sigma2 = 1))
+plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 500")
+
+Xt = gen_gts(n = 5000, model = AR1(phi = 0.9, sigma2 = 1))
+plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 5000")
+```
+
+# Robustness Issues
+
+The data generating process delivers a theoretical autocorrelation
+(autocovariance) function that, as explained in the previous section,
+can then be estimated through the sample autocorrelation (autocovariance)
+functions. However, in practice, the sample is often issued from a data 
+generating process that is "close" to the true one, meaning that the sample
+suffers from some form of small contamination. This contamination is typically
+represented by a small amount of extreme observations that are called "outliers"
+that come from a process that is different from the true data generating process.
+
+The fact that the sample can suffer from outliers implies that the standard
+estimation of the autocorrelation (autocovariance) functions through the sample
+functions could be highly biased. The standard estimators presented in the
+previous section are therefore not "robust" and can behave badly when the sample
+suffers from contamination. To illustrate this limitation for a classical estimator,
+we consider the following two processes:
+  
+\[ 
+    \begin{aligned}
+    X_t &= \phi X_{t-1} + W_t, \;\;\; W_t \sim \mathcal{N}(0,\sigma_w^2),\\
+    Y_t &= \begin{cases}
+    X_t       & \quad \text{with probability } 1 - \epsilon\\
+    U_t  & \quad \text{with probability } \epsilon\\
+    \end{cases}, \;\;\; U_t \sim \mathcal{N}(0,\sigma_u^2),
+    \end{aligned}
+\] 
+
+where $\epsilon$ is "small" and $\sigma_u^2 \gg \sigma_w^2$. The process $(Y_t)$
+can be interpreted as a "contaminated" version of $(X_t)$ and the figure below
+represents one realization of the process $(Y_t)$ using the 
+following setting: $T = 100$, $\sigma_u^2 = 10$, $\phi = 0.9$, $\sigma_w^2 = 1$ as 
+well as $\alpha = 0.05$.
+
+```{r Yt, cache = TRUE, fig.height = 4, fig.width = 7}
+# Set seed for reproducibility
+set.seed(2241)
+# Define length of time series
+N = 100
+# Select observations from contamination distribution
+epsilon = 0.05
+index = sample(1:N, round(epsilon*N))
+Ut = gen_gts(N, WN(sigma2 = 10))
+# Simulate observations from Xt and Yt
+Xt = gen_gts(N, AR1(phi = 0.9, sigma2 = 1))
+Yt = Xt
+Yt[index] = Ut[index]
+# Plot time series
+par(mfrow = c(1,1))
+plot(Yt, main = "Contaminated Time Series Yt")
+```
+
+The first question we can ask ourselves looking at this figure is: where are the outliers? `r emo::ji("thinking_face")` You can probably spot a few but there are 5 outliers. If you're having difficulties detecting the outliers don't worry: it's a commonly known phenomenon in time series that detecting outliers is not always easy. Indeed, when looking at a time series for the first time it's not straightforward to understand if there's any form of contamination. Let's now compare $(X_t)$ and $(Y_t)$ in the following plots. 
+
+```{r XtYt, cache = TRUE, fig.height = 8, fig.width = 7}
+# Plot time series
+par(mfrow = c(2,1))
+plot(Xt, main = "Original Time Series Xt")
+plot(Yt, main = "Contaminated Time Series Yt")
+points(index-1, Yt[index], col = "red")
+```
+
+In this case it's more simple to detect the outliers (that are also highlighted with the red dots) since we can compare $(Y_t)$ with the original uncontaminated time series $(X_t)$. Having highlighted how exploratory analysis can provide limited information on the presence of contamination in an observed time series, we now consider a simulated example to highlight how the performance of a
+"classical" autocorrelation estimator can deteriorate if the sample is contaminated (i.e.
+what is the impact of $(Y_t)$ on the ACF estimator $\hat{\rho}(h)$). In this simulation, we will use the setting presented above and
+consider $B = 10^3$ bootstrap replications comparing the performance of the classical estimator when applied to an uncontaminated time series $(X_t)$ and a contaminated time series $(Y_t)$.
+
+```{r simulationRobust, cache = TRUE, fig.height = 5.5, fig.width = 7}
+B = 1000 # Number of simulations
+N = 100 # Length of time series
+epsilon = 0.05 # Amount of contamination
+phi = 0.9 # AR(1) parameter value
+# Store first 15 values of Empirical ACF (for Xt and Yt)
+acf_xt = acf_yt = matrix(NA, B, 15)
+for(i in 1:B) {
+  
+  # Set seed for reproducibility
+  set.seed(i + 2241)
+  # Select observations from contamination distribution
+  index = sample(1:N, round(epsilon*N))
+  Ut = gen_gts(N, WN(sigma2 = 10))
+  # Simulate observations from Xt and Yt
+  Xt = gen_gts(N, AR1(phi = 0.9, sigma2 = 1))
+  Yt = Xt
+  Yt[index] = Ut[index]
+  
+  # Store ACF values
+  acf_xt[i, ] = as.numeric(auto_corr(Xt))[1:15]
+  acf_yt[i, ] = as.numeric(auto_corr(Yt))[1:15]
+  
+}
+# Compute the Theoretical ACF of an AR(1) model (up to lag 15)
+true_acf = phi^(1:15)
+# Make boxplots of Empirical ACF for both settings and compare with true ACF
+par(mfrow = c(1,2))
+boxplot(acf_xt[, 3], col = "grey80", main = "ACF at lag 3 (uncontaminated)")
+abline(h = true_acf[3], col = "red")
+boxplot(acf_yt[, 3], col = "grey80", main = "ACF at lag 3 (contaminated)")
+abline(h = true_acf[3], col = "red")
+```
+
+The boxplots represent the empirical distribution of the ACF estimator $\hat{\rho}(3)$: the left boxplot shows how the standard autocorrelation estimator is
+centered around the true value (red line) when the sample is not 
+contaminated while the right boxplot shows how this estimate is considerably biased when the sample is contaminated. Indeed, it can 
+be seen how the boxplot under contamination shows a lower value of autocorrelation indicating that it does not detect much dependence in the data although it should. The latter phenomenon is even more evident when analysing the empirical distributions at the larger lags. This is a known result in robustness, more specifically that outliers in the data can break the dependence structure and make it more difficult for the latter to be detected.
+
+In order to limit this problem, different robust estimators exist for time
+series problems which are designed to reduce the impact of contamination on 
+the estimation procedure. Among these estimators, there are a few that estimate the
+autocorrelation (autocovariance) functions in a robust manner. One of these 
+estimators is provided in the ``robacf()`` function in the "robcor" package. 
+The following simulated example shows how it limits the bias which is induced on the classic estimator $\hat{\rho}(h)$ from contamination. 
+Unlike the previous simulation, we shall only consider data issued 
+from the contaminated process $(Y_t)$, and compare the performance of two 
+estimators (i.e. classical and robust autocorrelation estimators):
+  
+```{r simulationRobust2, cache = TRUE, fig.height = 5.5, fig.width = 7}
+B = 1000 # Number of simulations
+N = 100 # Length of time series
+epsilon = 0.05 # Amount of contamination
+phi = 0.9 # AR(1) parameter value
+# Store first 15 values of Empirical ACF (classic and robust)
+cl_acf = rob_acf = matrix(NA, B, 15)
+for(i in 1:B) {
+  
+  # Set seed for reproducibility
+  set.seed(i + 2241)
+  # Select observations from contamination distribution
+  index = sample(1:N, round(epsilon*N))
+  Ut = gen_gts(N, WN(sigma2 = 10))
+  # Simulate observations from  Yt
+  Yt = gen_gts(N, AR1(phi = 0.9, sigma2 = 1))
+  Yt[index] = Ut[index]
+  
+  # Store Classic and Robust ACF values
+  cl_acf[i, ] = as.numeric(auto_corr(Yt))[1:15]
+  rob_acf[i, ] = as.numeric(auto_corr(Yt, robust = TRUE))[1:15]
+  
+}
+# Compute the Theoretical ACF of an AR(1) model (up to lag 15)
+true_acf = phi^(1:15)
+# Make boxplots of both Classic and Robust Empirical ACF and compare with true ACF
+par(mfrow = c(1,2))
+boxplot(cl_acf[, 2], col = "grey80", main = "Classic ACF at lag 2")
+abline(h = true_acf[2], col = "red")
+boxplot(rob_acf[, 2], col = "grey80", main = "Robust ACF at lag 2")
+abline(h = true_acf[2], col = "red")
+```
+
+In this case we see the empirical distributions of the two estimators (classic and robust) for the ACF at time-lag $h = 2$. As you can see, the robust estimator remains close to the true value represented by the red line in the boxplots as opposed to the standard estimator. However, the price to pay in terms of bias reduction is a loss of efficiency of the robust estimator. Indeed it can often be observed that to reduce the bias induced by contamination in the sample, robust estimators pay a certain price in terms of efficiency.
+
+To assess how much is "lost" by the robust estimator compared to the classical
+one in terms of efficiency, we consider one last simulation where we examine 
+the performance of two estimators on data issued from the uncontaminated process,
+i.e. $(X_t)$. Therefore, the only difference between this simulation and the 
+previous one is the value of $\epsilon$ set equal to $0$ (the code shall thus be omitted). For this reason we simply show a plot that represents the ratio of the variances of the classic and robust ACF estimators respectively. If they happened to have the same efficiency, we would expect this ratio to be roughly equal to 1 over all the considered lags (we omit this ratio at lag 1 since it is numerically impossible to represent due to the infinitesimal size of the empirical variances).
+  
+```{r simulationRobust3, cache = TRUE, echo = FALSE, fig.height = 5.5, fig.width = 7}
+B = 1000 # Number of simulations
+N = 100 # Length of time series
+phi = 0.9 # AR(1) parameter value
+# Store first 15 values of Empirical ACF (classic and robust)
+cl_acf = rob_acf = matrix(NA, B, 15)
+for(i in 1:B) {
+  
+  # Set seed for reproducibility
+  set.seed(i + 2241)
+  # Simulate observations from  Xt
+  Xt = gen_gts(N, AR1(phi = 0.9, sigma2 = 1))
+  
+  # Store Classic and Robust ACF values
+  cl_acf[i, ] = as.numeric(auto_corr(Xt))[1:15]
+  rob_acf[i, ] = as.numeric(auto_corr(Xt, robust = TRUE))[1:15]
+  
+}
+# Compute the variance ratio (Classic/Robust) (from lags 2 to 15)
+eff = apply(cl_acf[, 2:15], 2, var)/apply(rob_acf[, 2:15], 2, var)
+# Plot the efficiency over the time lags 2 to 15
+plot(2:15, eff, main = "Ratio of Empirical Variances of Classic and Robust ACF", ylim = c(0.5, 1.1), ylab = "Efficiency", xlab = "Time Lags (h)", type = "l")
+abline(h = 1, lty = 2, col = "red")
+```
+
+As can be seen on the plot, the black line representing the above described ratio decreases steadily as the lags increase and moves further away from the red dotted line representing equality of variances. Hence, since the variance of the classic ACF estimator is in the numerator of this ratio, we can conclude that the variance of the robust ACF estimator is always larger and increases over the lags. This can partly be explained by the fact that the classic ACF estimator $\hat{\rho}(h)$ makes use of all the observations while the robust estimator only uses part of the information coming from more "extreme" observations. Moreover, the number of observations available to estimate the greater lags is smaller and therefore the robust ACF estimator pays a larger price in terms of "loss" of information.
+
+Let us finally investigate the importance of robust ACF estimation on some real data. We consider the data on monthly precipitation (`hydro`) presented in the previous chapter. This data is measured over 65 years (between 1907 and 1972) and is an example of data that is used to determine the behaviour of a water cycle. More specifically, precipitation is often considered the starting point for the analysis of a water cycle and, based on its behaviour, the rest of the water cycle is determined based on other variables. Therefore, a correct analysis of precipitation is extremely important to correctly define the behaviour of the water cycle passing through run-off and groundwater formation to evaporation and condensation. Given this, let us now take a look at the classic autocorrelation plot of this data.
+
+```{r}
+# Load hydro dataset
+data("hydro")
+# Define the time series as a gts object
+hydro = gts(as.vector(hydro), start = 1907, freq = 12, unit_ts = "mm", name_ts = "Precipitation", data_name = "Hydrology data")
+# Plot the Empirical ACF
+plot(auto_corr(hydro))
+```
+
+
+Based on this ACF plot, one would probably conclude that (counterintuitively) there does not appear to be any significant form of correlation between lagged observations in the data. From a hydrological point of view, one would therefore assume an uncorrelated model for precipitation (i.e. white noise) and, based on this, model the rest of the water cycle. However, let us take a look at the robust ACF plot.
+
+```{r}
+# Plot the Robust ACF
+plot(auto_corr(hydro, robust = TRUE))
+```
+
+If we analyse this output, the conclusion appears to be extremely different and, in some way, makes more sense from a hydrological point of view (i.e. the amount of precipitation between close months and over specific months is correlated). Indeed, we can see that there appears to be a seasonal correlation ("waves" in the ACF plot) and that close months appear to be correlated between them. To better highlight this difference (whci can lead to different conclusions) let us finally compare the plots.
+
+```{r}
+# Compare classic and robust ACF
+compare_acf(hydro)
+```
+
+Therefore, based on the choice of analysis (i.e. classic or robust), the entire water cycle analysis would change and could deliver very different conclusions.
+
+# ACF and PACF of ARMA models
+
+ADD EXAMPLE OF THEO AND EMPIRICAL FOR ARMA
+
+# Estimation of ARMA processes
+
+
+
