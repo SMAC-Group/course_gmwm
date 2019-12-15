@@ -30,8 +30,8 @@ plot(allan_variance)
 # Add colors for the scales
 wn_scales = 1:8
 rw_scales = 13:17
-points(allan_variance$levels[wn_scales], sqrt(allan_variance$allan[wn_scales]), col = "red", pch = 16, cex= 1.5)
-points(allan_variance$levels[rw_scales], sqrt(allan_variance$allan[rw_scales]), col = "green3", pch = 16, cex= 1.5)
+points(allan_variance$levels[wn_scales], allan_variance$adev[wn_scales], col = "red", pch = 16, cex= 1.5)
+points(allan_variance$levels[rw_scales], allan_variance$adev[rw_scales], col = "green3", pch = 16, cex= 1.5)
 ```
 
 We can fit the parameters of this models using the standard AVLR approach as follows:
@@ -42,11 +42,27 @@ fit = avlr(allan_variance, wn = wn_scales, rw = rw_scales)
 fit
 ```
 
-
 ```{r, eval = FALSE}
 ## 
 ##  Estimates: 
 ##           Value
 ## WN 0.0994438407
 ## RW 0.0001014326
+```
+
+```{r chap4_fit_avlr_plot, fig.height = 5, fig.width = 6.5, cache = TRUE}
+plot(fit)
+```
+
+```{r chap4_fit_avlr_plot_with_decomp, fig.height = 5, fig.width = 6.5, cache = TRUE}
+plot(fit, decomp = TRUE)
+```
+
+```{r chap4_fit_avlr_plot2, fig.height = 5, fig.width = 6.5, cache = TRUE}
+scales = allan_variance$levels
+X = cbind(1/scales, scales/3)
+Omega = diag(1/(allan_variance$errors))
+a = solve(t(X)%*%Omega%*%X)%*%t(X)%*%Omega%*%allan_variance$allan
+plot(allan_variance)
+lines(allan_variance$levels, sqrt(a[1]/scales + a[2]*scales/3), type = "b", col = "red", lwd = 2)
 ```
