@@ -77,7 +77,7 @@ const Layout = ({ isHome, title, description, children }) => {
                                     </section>
                                     
                                     
-
+                                    
                                     <section className={classes.footerSection}>
                                     
                                         {meta.showProfileImage && (
@@ -88,7 +88,20 @@ const Layout = ({ isHome, title, description, children }) => {
                                             />
                                         )}
                                         <p>{meta.bio}</p>
+                                    
                                     </section>
+                                     <div align="center">
+                                    <section>
+                                   
+                                    <img
+                                                src="/licence.png"
+                                                alt=""
+                                                
+                                            />
+                                    
+
+                                    </section>
+                                    </div>
 
                                     {meta.footerLinks && (
                                         <ul className={classes.footerLinks}>
