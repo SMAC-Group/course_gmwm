@@ -132,13 +132,23 @@ plot(Xt)
 <img src="chap2_simu_composite2-1.png" alt=" " width="90%">
 </div>
 
-Using your favorite R IDE (RStudio) or the coding enviroment below:
+Using your favorite R IDE (RStudio) or the coding enviroment below simulate a white noise process of length 1000 with variance 1:
 
 <codeblock id="01_03">
 
-This is a hint.
+The function `WN()` can be used here.
 
 </codeblock>
+
+Similarly, simulate a composite process containg a white noise, a random walk and an AR(1) with the length and the parameter values of your choice:
+
+<codeblock id="01_04">
+
+The functions `RW()` and `AR1()` can be used here. It is interesting to compare the functions `gen_gts()` and `gen_lts()`.
+
+</codeblock>
+
+
 </exercise>
 
 <exercise id="4" title="Autocorrelation">
@@ -244,6 +254,17 @@ Therefore, based on the choice of analysis (i.e. classic or robust), the entire 
 
 </exercise>
 
-<exercise id="7" title="hgjgs">
+<exercise id="7" title="kh">
+
+ksdgrg;kb lfzsgn
+
+zflgn
+
+```{r}
+sdrgm
+```
+<slides source = "test">
+
+</slides>
 
 </exercise>

@@ -2,7 +2,7 @@
 title: 'Chapter 1: Introduction and Motivation'
 description:
   'This chapter will teach you about many cool things and introduce you to the
-  most important concepts of the course. (\\(\lambda\\)) $\lambda$'
+  most important concepts of the course. λπ (\\(\lambda\\)) $\lambda$'
 prev: null
 next: /chapter2
 type: chapter
@@ -47,7 +47,7 @@ This is not correct either.
 This is a code exercise. 
 
 # test.
-We consider the AV at dyadic scales ($a^2 + b^2 = c^2$) starting from local averages of the process which can be denoted as
+We \\(\lambda\\) consider the AV at dyadic scales ($a^2 + b^2 = c^2$) starting from local averages of the process which can be denoted as
     
 $$
 a^2 + b^2 = c^2
@@ -61,7 +61,7 @@ katex.render("a^2 + b^2 = c^2", elementById, {
 
 # end test
 
-The content can be formatted in simple Markdown – so
+The content can be formatted in simple Markdown – so
 you can have **bold text**, `code` or [links](https://spacy.io) or lists, like
 the one for the instructions below.
 
