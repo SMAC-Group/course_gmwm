@@ -53,6 +53,12 @@ $$
 a^2 + b^2 = c^2
 $$
 
+katex.render("a^2 + b^2 = c^2", elementById, {
+            throwOnError: false
+        });
+
+
+
 # end test
 
 The content can be formatted in simple Markdown – so
