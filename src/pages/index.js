@@ -6,7 +6,8 @@ import { Link } from '../components/link'
 import Logo from '../../static/logo.svg'
 
 import classes from '../styles/index.module.sass'
-
+const katex = require(`katex`)
+const remarkMath = require(`remark-math`)
 
 export default ({ data }) => {
     const siteMetadata = data.site.siteMetadata
