@@ -4,7 +4,7 @@
 
 Welcome! This is the source repository for **GMWM Tutorial with R**, hosted at: <https://github.com/SMAC-Group/course_gmwm>.
 
-The [site](https://gmwm.netlify.com/)  itself is built on an amazing framework created by <a href='https://ines.io/'>Ines Montani</a>, originally created for her [spaCy course](https://course.spacy.io).  The front-end is powered by
+The site itself is built on an amazing framework created by <a href='https://ines.io/'>Ines Montani</a>, originally created for her [spaCy course](https://course.spacy.io).  The front-end is powered by
 [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com) and the
 back-end code execution uses [Binder](https://mybinder.org). </p>
 
