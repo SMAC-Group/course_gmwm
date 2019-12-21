@@ -42,7 +42,8 @@
         "rehype-react": "^3.1.0",
         "remark-math": "^2.0.0",
         "remark-react": "^5.0.1",
-        "reveal.js": "^3.8.0"
+        "reveal.js": "^3.8.0",
+        "sharp": "^0.23.4"
     },
     "scripts": {
         "build": "gatsby build",
