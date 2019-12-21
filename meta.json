@@ -18,7 +18,7 @@
     "showProfileImage": true,
     "footerLinks": [
         { "text": "Website", "url": "https://data-analytics-lab.net/" },
-        { "text": "Source", "url": "https://github.com/SMAC-Group/course_smac_epfl" },
+        { "text": "Source", "url": "https://github.com/SMAC-Group/course_gmwm" },
         { "text": "Built with ♥", "url": "https://github.com/ines/course-starter-r" }
     ],
     "theme": "#de7878"
