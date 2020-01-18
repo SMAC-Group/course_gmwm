@@ -1,5 +1,5 @@
 ---
-title: '📈 Chapter 2: Introduction to Times Series'
+title: '2 - Introduction to Times Series'
 description:
   ''
 prev: /chapter1
