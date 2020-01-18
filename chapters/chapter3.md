@@ -64,3 +64,23 @@ Main references:
 
 </exercise>
 
+<exercise id="5" title="Exercises">
+
+<exercise id="1" title="Exercise 1">
+ 
+</exercise>
+
+<exercise id="2" title="Exercise 2">
+ 
+</exercise>
+
+<exercise id="3" title="Exercise 3">
+ 
+</exercise>
+
+<exercise id="4" title="Exercise 4">
+ 
+</exercise>
+
+</exercise>
+
