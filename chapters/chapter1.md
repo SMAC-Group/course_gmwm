@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 1: Introduction and Motivation'
+title: '1 - Introduction and Motivation'
 description:
   'This chapter will teach you about many cool things and introduce you to the
   most important concepts of the course. λπ (\\(\lambda\\)) $\lambda$'
