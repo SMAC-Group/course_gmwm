@@ -9,7 +9,19 @@ speaker notes on the side. Slides can be separated with a divider: ---
 
 ---
 
-# This is an embedded pdf
+# test synthax highlight
+
+```r
+# Print something
+x = rnorm(100)
+plot(density(x))
+print("Hello world", quote = FALSE)
+```
+
+---
+
+
+# This is an  test embedded pdf
 
 <object data="http://yoursite.com/the.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="http://yoursite.com/the.pdf">
