@@ -28,7 +28,7 @@ const Template = ({ data }) => {
     useEffect(() => {
       window.MathJax && window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub])
     })
-
+    
     return (
         <ChapterContext.Provider value={{ activeExc, setActiveExc, completed, setCompleted }}>
             <Layout title={title} description={description}>

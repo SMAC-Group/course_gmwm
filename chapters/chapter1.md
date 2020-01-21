@@ -2,7 +2,7 @@
 title: '1 - Introduction and Motivation'
 description:
   'This chapter will teach you about many cool things and introduce you to the
-  most important concepts of the course. λπ (\\(\lambda\\)) $\lambda$'
+  most important concepts of the course.'
 prev: null
 next: /chapter2
 type: chapter
@@ -46,18 +46,16 @@ This is not correct either.
 
 This is a code exercise. 
 
-# test.
-We \\(\lambda\\) consider the AV at dyadic scales ($a^2 + b^2 = c^2$) starting from local averages of the process which can be denoted as
+# test latex on gmwm
+We consider the AV at dyadic scales starting from local averages of the process which can be denoted as
     
 $$
 a^2 + b^2 = c^2
 $$
 
-katex.render("a^2 + b^2 = c^2", elementById, {
-            throwOnError: false
-        });
-
-
+$$
+\sum_{i=1}^{n} y-\textbf{X}^T\beta
+$$
 
 # end test
 

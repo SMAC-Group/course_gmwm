@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Marked from 'reveal.js/plugin/markdown/marked.js'
 import classNames from 'classnames'
-
+import Prism from 'prismjs'
 import '../styles/reveal.css'
 import classes from '../styles/slides.module.sass'
 
@@ -40,6 +40,11 @@ class Slides extends React.Component {
                 })
             })
         })
+        const langs = ['r']
+        Promise.all(langs.map(lang => import(`prismjs/components/prism-${lang}`))).then(() =>
+            setTimeout(() => { Prism.highlightAll() }, 1000)
+        )
+        
     }
 
     componentWillUnmount() {
