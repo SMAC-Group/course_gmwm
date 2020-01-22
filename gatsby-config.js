@@ -22,7 +22,40 @@ module.exports = {
                 }
               ],
             },
-          },        
+          },
+          
+                {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    `gatsby-remark-copy-linked-files`,
+                    {
+                        resolve: `gatsby-remark-prismjs`,
+                        options: {
+                            noInlineHighlight: true,
+                        },
+                    },
+                    {
+                        resolve: `gatsby-remark-smartypants`,
+                        options: {
+                            dashes: 'oldschool',
+                        },
+                    },
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 790,
+                            linkImagesToOriginal: true,
+                            sizeByPixelDensity: false,
+                            showCaptions: true,
+                            quality: 80,
+                            withWebp: { quality: 80 },
+                        },
+                    },
+                    `gatsby-remark-unwrap-images`,
+                ],
+            },
+        },  
         {
             resolve: `gatsby-plugin-sass`,
             options: {
@@ -66,38 +99,7 @@ module.exports = {
                 },
             },
         },
-        {
-            resolve: `gatsby-transformer-remark`,
-            options: {
-                plugins: [
-                    `gatsby-remark-copy-linked-files`,
-                    {
-                        resolve: `gatsby-remark-prismjs`,
-                        options: {
-                            noInlineHighlight: true,
-                        },
-                    },
-                    {
-                        resolve: `gatsby-remark-smartypants`,
-                        options: {
-                            dashes: 'oldschool',
-                        },
-                    },
-                    {
-                        resolve: `gatsby-remark-images`,
-                        options: {
-                            maxWidth: 790,
-                            linkImagesToOriginal: true,
-                            sizeByPixelDensity: false,
-                            showCaptions: true,
-                            quality: 80,
-                            withWebp: { quality: 80 },
-                        },
-                    },
-                    `gatsby-remark-unwrap-images`,
-                ],
-            },
-        },
+
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         `gatsby-plugin-sitemap`,
