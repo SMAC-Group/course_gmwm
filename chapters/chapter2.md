@@ -190,11 +190,6 @@ plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 5000")
 
 </exercise>
 
-
-<exercise id="5" title="hgjgs">
-
-</exercise>
-
 <exercise id="6" title="Robustness Issues">
 
 The data generating process delivers a theoretical autocorrelation
@@ -254,17 +249,3 @@ Therefore, based on the choice of analysis (i.e. classic or robust), the entire 
 
 </exercise>
 
-<exercise id="7" title="kh">
-
-ksdgrg;kb lfzsgn
-
-zflgn
-
-```r
-sdrgm
-```
-<slides source = "test">
-
-</slides>
-
-</exercise>

@@ -1,8 +1,8 @@
 ---
-title: '🛰 Chapter 4: Allan Variance'
+title: '🛰 Chapter 4: GMWM'
 description:
   ' '
-prev: /chapter4
+prev: /chapter3
 next: /null
 type: chapter
 id: 3
@@ -10,17 +10,24 @@ id: 3
 
 <exercise id="1" title="General Information">
 
-In this chapter we provide an introduction to the Allan Variance and discuss how this quantity can be used to estimate time series models. This chapter is based on the R packages [`simts`](https://smac-group.github.io/simts/index.html) and [`avar`](https://smac-group.github.io/avar/index.html), which can be installed as follows:
+This repository holds the Generalized Method of Wavelet Moments (GMWM) R package. This estimation technique was introduces in Guerrier et al. (2013) and uses the wavelet variance in a moment-matching spirit to estimate parameters of time series models such as ARMA or state-space models. This package is currently being modified and is likely to change significantly in the coming months. The *development* version of the package is available on [GitHub](https://github.com/SMAC-Group/gmwm) and you can installed as follows:
 
-```{r}
-# Cran (stable) version
-install.packages("simts")
-install.packages("avar")
+```r
+# Install dependencies
+install.packages("devtools")
 
-# Developpement version
-devtools::install_github("SMAC-Group/simts")
-devtools::install_github("SMAC-Group/avar")
+# Install/Update the package from GitHub
+devtools::install_github("SMAC-Group/gmwm")
 ```
+
+The main features of the package are presented in the sections below and will use data from the `imudata` R package, which can be installed as:
+
+```{r, eval=FALSE}
+# Install/Update the package from GitHub
+devtools::install_github("SMAC-Group/imudata")
+```
+
+Note that the installation process may be a little slow. 
 
 The sildes we will can be downloaded [here](TO BE FILLED). 
 
@@ -41,18 +48,48 @@ Main references:
 
 </exercise>
 
-<exercise id="2" title="Plotting the Allan Variance">
+<exercise id="2" title="Computing the Allan Variance">
+
+<slides source="chapter4_01"> 
+</slides>
 
 </exercise>
 
-<exercise id="3" title="Parameter Estimation with the Allan Variance">
+
+<exercise id="3" title="Computing the Robust Wavelet Variance">
+
+<slides source="chapter4_02"> 
+</slides>
 
 </exercise>
 
-<exercise id="4" title="jh">
+
+<exercise id="4" title="Computing the Wavelet Variance of an IMU">
+
+<slides source="chapter4_03"> 
+</slides>
 
 </exercise>
 
-<exercise id="5" title="Plotting the Allan Variance">
+
+<exercise id="5" title="The Generalized Method of Wavelet Moments">
+
+<slides source="chapter4_04"> 
+</slides>
+
+</exercise>
+
+
+<exercise id="6" title="Model selection">
+
+<slides source="chapter4_05"> 
+</slides>
+
+</exercise>
+
+<exercise id="7" title="The Generalized Method of Wavelet Moments for Inertial Sensors Calibration">
+
+<slides source="chapter4_06"> 
+</slides>
 
 </exercise>
