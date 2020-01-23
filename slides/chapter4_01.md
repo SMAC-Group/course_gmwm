@@ -6,55 +6,41 @@ type: slides
 
 ---
 
-# The avar function
+# Computing the Wavelet Variance
 
-Two estimators are implemented in the `avar` package. A simple example with simulated data is given here:
+The `gmwm` package implements the standard (Haar) Wavelet Variance (WV) proposed by Percival, (1995). Here is a simple example:
 
 ```r
-# Simulate white noise
-n = 10^4   
-Xt = gen_gts(n = n, WN(sigma2 = 1))
+# Load package
+library(gmwm)
 
-# Compute (Maximal Overlap) AV
-Xt_av = avar(Xt)
-Xt_av
-```
+# Sample size
+n = 10^4
 
-```out
-##  Levels: 
-##  [1]    2    4    8   16   32   64  128  256  512 1024 2048 4096
-## 
-##  Allan Variances: 
-##  [1] 0.51158339 0.24744204 0.11787223 0.05902477 0.02957823 0.01604152
-##  [7] 0.00833642 0.00561614 0.00275575 0.00098946 0.00092515 0.00014253
-## 
-##  Type: 
-## [1] "mo"
+# Specify model
+model = AR1(phi = .98, sigma2 = .02) + WN(sigma2 = 1)
+
+# Generate Data
+Xt = gen_gts(n = n, model = model)
 ```
 
 ---
 
-# Log-Log plots (1/2)
+Using this data we can compute the Haar WV as follows:
 
-The standard "log-log plot" of the AV can simply be made with the function `plot()`:
+```{r, fig.align='center', fig.width=6, fig.height=4, cache=TRUE}
+# Compute Haar WV
+wv_Xt = wvar(Xt)
+wv_Xt
+```
+It is also possible to create a standard "log-log" plot by simply using the function `plot()`:
 
-```r
-plot(Xt_av)
+```{r gmwm1, fig.align='center', fig.width=6, fig.height=4, cache=TRUE}
+plot(wv_Xt)
 ```
 
-<div style="text-align:center"><img src="av1-1.png" alt=" " width="70%">
+
+<div style="text-align:center"><img src="av1-1.png" alt=" " width="55%">
 
 ---
 
-# Log-Log plots (2/2)
-
-To assess if the empirical AV is "close"" to its theoretical version, we add this quantity in red below:
-
-```r
-plot(Xt_av)
-lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
-```
-
-<div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
-
----
