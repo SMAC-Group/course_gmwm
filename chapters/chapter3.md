@@ -8,6 +8,13 @@ type: chapter
 id: 3
 ---
 
+<exercise id="0" title="Introduction" type="slides">
+
+<slides source="chapter1_01_introduction">
+</slides>
+
+</exercise>
+
 <exercise id="1" title="General Information">
 
 This chapter is based on the R package [`avar`](https://smac-group.github.io/avar/index.html), which can be installed as follows:
