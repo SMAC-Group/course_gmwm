@@ -2,59 +2,69 @@
 type: slides
 ---
 
-# Computing the Allan Variance
+# The Generalized Method of Wavelet Moments
 
 ---
 
-# The avar function
+The `gmwm` allows to estimate the parameters of various time series models in an efficient and consistent manner. The function which implements this method is simply called `gmwm()`. There are multiple arguments to this function which provide the users with a flexible range of options to tailor the estimation to their needs. This function relies on  users supplying an error model which can be specified using a combination of all or a subset of the following processes:
 
-Two estimators are implemented in the `avar` package. A simple example with simulated data is given here:
+- `GM()`: a Gauss-Markov process;
+- `AR1()`: a first-order autoregressive process;
+- `WN()`: a white noise process;
+- `QN()`: quantization noise process;
+- `RW()`: a random walk process;
+- `DR()`: a drift "process";
+- `AR(p)`: a `p`-order autoregressive process;
+- `MA(q)`: a `q`-order moving average process;
+- `ARMA(p,q)`: an autoregressive-moving average process.
+
+---
+
+It  must  be  underlined  that  a  first-order  autoregressive  process  (`AR1()`)  is  simply  an one-to-one  reparametrization  of  a Gauss-Markov process (`GM()`). The  latent  processes  underlying  the  error  signal,  whose  parameters  need  to  be  estimated,  can  be  specified  by simply adding the different processes mentioned above via the `+` operator. However, there are some limits to how many times a process can be included in a model. In particular, only the `GM()` or `AR1()` models can be included more than once (say `k` times) by specifying, for example, `k*GM()` while the other processes can only be included once within the same model.
+
+---
+
+To illustrate how the function `gmwm()` can be used we start by considering the AR1() with measrument error we discussed previously. 
 
 ```r
-# Simulate white noise
-n = 10^4   
-Xt = gen_gts(n = n, WN(sigma2 = 1))
-
-# Compute (Maximal Overlap) AV
-Xt_av = avar(Xt)
-Xt_av
+mod = gmwm(AR1() + WN(), Xt)
+summary(mod)
 ```
-
-```out
-##  Levels: 
-##  [1]    2    4    8   16   32   64  128  256  512 1024 2048 4096
-## 
-##  Allan Variances: 
-##  [1] 0.51158339 0.24744204 0.11787223 0.05902477 0.02957823 0.01604152
-##  [7] 0.00833642 0.00561614 0.00275575 0.00098946 0.00092515 0.00014253
-## 
-##  Type: 
-## [1] "mo"
-```
-
----
-
-# Log-Log plots (1/2)
-
-The standard "log-log plot" of the AV can simply be made with the function `plot()`:
 
 ```r
-plot(Xt_av)
+plot(mod)
 ```
 
-<div style="text-align:center"><img src="av1-1.png" alt=" " width="70%">
-
----
-
-# Log-Log plots (2/2)
-
-To assess if the empirical AV is "close"" to its theoretical version, we add this quantity in red below:
+The "true" data generating used to generate `Xt` was given by
 
 ```r
-plot(Xt_av)
-lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
+model
 ```
 
-<div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
+---
+
+and therefore the GMWM provides reasonable estimated parameters. We can repeat the same process with the perturbed version of `Xt` which we called `Yt`:
+
+```r
+mod_Yt = gmwm(AR1() + WN(), Yt)
+summary(mod_Yt)
+```
+
+```r
+plot(mod_Yt)
+```
 
 ---
+
+In this case, the estimation is quite poor and, for example, the variance of the `WN()` is largely overestimated. Alternatively, we can used the robust estimator as follows:
+
+```r
+mod_Yt_rob = gmwm(AR1() + WN(), Yt, robust = TRUE)
+summary(mod_Yt_rob)
+```
+
+```r
+plot(mod_Yt_rob)
+```
+
+In this case, the result are much closer to the ones obtained on `Xt` and illustrates the robustness of the estimator.

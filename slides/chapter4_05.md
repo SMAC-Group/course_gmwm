@@ -2,59 +2,118 @@
 type: slides
 ---
 
-# Computing the Allan Variance
+# Model Selection
 
 ---
 
-# The avar function
-
-Two estimators are implemented in the `avar` package. A simple example with simulated data is given here:
+In practice, the model we should consider to describe a specific time series models is generally unknown. For example, if we consider a time series issued from the model ` WN() + AR1() + RW()`, the WV of this time series may not clearly indicate which model should be used. Here is an example:
 
 ```r
-# Simulate white noise
-n = 10^4   
-Xt = gen_gts(n = n, WN(sigma2 = 1))
+library(gmwm)
+# Set seed to repliacte results
+set.seed(182)
 
-# Compute (Maximal Overlap) AV
-Xt_av = avar(Xt)
-Xt_av
-```
+# Sample size
+n = 4*10^4
 
-```out
-##  Levels: 
-##  [1]    2    4    8   16   32   64  128  256  512 1024 2048 4096
-## 
-##  Allan Variances: 
-##  [1] 0.51158339 0.24744204 0.11787223 0.05902477 0.02957823 0.01604152
-##  [7] 0.00833642 0.00561614 0.00275575 0.00098946 0.00092515 0.00014253
-## 
-##  Type: 
-## [1] "mo"
+# Specify model
+model = AR1(phi = .9, sigma2 = .1) + WN(sigma2 = 1) + RW(gamma2 = 0.0001) 
+
+# Generate Data
+Xt = gen_gts(n = n, model = model) 
+
+# Plot WV
+plot(wvar(Xt)) 
 ```
 
 ---
 
-# Log-Log plots (1/2)
-
-The standard "log-log plot" of the AV can simply be made with the function `plot()`:
+Assuming that one indentifies the correct model, they would obtain the following result:
 
 ```r
-plot(Xt_av)
+# Fit true model
+mod = gmwm(WN() + AR1() + RW(), Xt) 
+summary(mod, inference = TRUE)      
 ```
-
-<div style="text-align:center"><img src="av1-1.png" alt=" " width="70%">
-
----
-
-# Log-Log plots (2/2)
-
-To assess if the empirical AV is "close"" to its theoretical version, we add this quantity in red below:
 
 ```r
-plot(Xt_av)
-lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
+plot(mod)     
 ```
 
-<div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
+---
+
+We could then wonder if a *smaller* model might be more approriate (e.g. `WN() + AR1()`). To avoid any numerical issues we initialize the next model using the parameters values obtained from the previous estimation:
+
+```r
+mod1_start = WN(sigma2 = 0.990997918) + AR1(phi = 0.897352858, sigma2 = 0.100979984)
+mod1 = gmwm(mod1_start, Xt) 
+summary(mod1, inference = TRUE)    
+```
+
+```r
+plot(mod1)     
+```
 
 ---
+
+Thie second model appears to provide a poorer fit then our first (correct) model. We can further compare these models as follows:
+
+```r
+compare_models(mod, mod1, show.theo.wv = T,   
+               facet.label = c('WN() + AR1() + RW()', 'WN() + AR1()')) 
+```
+
+---
+
+The `gmwm` also contains an automatic method to select and rank models by either providing a list of models or searching all *nested* models. We will use the second method and search all models nested with the model `WN() + AR1() + RW()`, namely the following seven models:
+
+- `WN()`
+- `AR1()`
+- `RW()`
+- `WN() + AR1()`
+- `WN() + RW()`
+- `AR1() + RW()`
+- `WN() + AR1() + RW()`
+
+---
+
+This method selection approach is implemented in the function `rank_models()`, which is used in the example below:
+
+```r
+rank_models(WN() + AR1() + RW(), data = Xt, nested = TRUE, bootstrap = TRUE, model.type = "imu", B = 100)
+```
+
+---
+
+In this case, the model `WN() + AR1() + RW()` appears to provide the best fit among all candidate models. However, this example is bit artificial as the correct model is used as reference. One could wonder what would happend if were to specify an *incorrect* one to the function `rank_models()`. This is done as an example using the model `WN() + 2*AR1() + RW()` which is clearly not the right one:
+
+```r
+rank_models(WN() + 2*AR1() + RW(), data = Xt, nested = TRUE, bootstrap = TRUE, model.type = "imu", B = 100)
+```
+
+---
+
+In this case also the suggested model remains the correct model, i.e. `WN() + AR1() + RW()`. However, this method selection approach is mainly indicative and more research is needed on the reliability of this method. In fact, all models having a Goodness-of-Fit (GoF) P-Values larger than, say, 5% should be considered as viable models. A possible approach is to select the model with the smallest number of parameters within these set of models having a GoF P-Values larger than 5%. In this case, the set of models is: 
+
+- `WN + AR1 + RW`
+- `WN + 2*AR1` 
+- `WN + 2*AR1 + RW` 
+- `2*AR1 + RW`,
+
+---
+
+also leading to the choice of the model `WN + AR1 + RW` (since it has the smallest number of parameters). Finally, we could also compare these models graphically as follows:
+
+```r
+mod1 = gmwm(WN() + AR1() + RW(), Xt) 
+mod2 = gmwm(WN() + 2*AR1(), Xt) 
+mod3 = gmwm(WN() + 2*AR1() + RW(), Xt) 
+mod4 = gmwm(2*AR1() + RW(), Xt) 
+
+compare_models(mod1, mod2, mod3, mod4, show.theo.wv = T,   
+               facet.label = c('WN() + AR1() + RW()', 'WN() + 2*AR1()',
+                               'WN() + 2*AR1() + RW()', 
+                               '2*AR1() + RW()'))
+```
+
+It can clearly be observed that all model provide extremly similar fits and using the "smallest" appears reasonable.

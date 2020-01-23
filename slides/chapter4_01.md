@@ -28,14 +28,14 @@ Xt = gen_gts(n = n, model = model)
 
 Using this data we can compute the Haar WV as follows:
 
-```{r, fig.align='center', fig.width=6, fig.height=4, cache=TRUE}
+```r
 # Compute Haar WV
 wv_Xt = wvar(Xt)
 wv_Xt
 ```
 It is also possible to create a standard "log-log" plot by simply using the function `plot()`:
 
-```{r gmwm1, fig.align='center', fig.width=6, fig.height=4, cache=TRUE}
+```r
 plot(wv_Xt)
 ```
 

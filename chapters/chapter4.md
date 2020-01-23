@@ -71,7 +71,6 @@ Main references:
 
 </exercise>
 
-
 <exercise id="5" title="The Generalized Method of Wavelet Moments">
 
 <slides source="chapter4_04"> 
@@ -80,12 +79,13 @@ Main references:
 </exercise>
 
 
-<exercise id="6" title="Model selection">
+<exercise id="6" title="Model Selection">
 
 <slides source="chapter4_05"> 
 </slides>
 
 </exercise>
+
 
 <exercise id="7" title="The Generalized Method of Wavelet Moments for Inertial Sensors Calibration">
 

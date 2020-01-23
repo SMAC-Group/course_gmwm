@@ -2,59 +2,101 @@
 type: slides
 ---
 
-# Computing the Allan Variance
+
+# Computing the Wavelet Variance of an IMU
 
 ---
 
-# The avar function
+The `gmwm` package contains several functions that are spefically adapted to work with inertial sensor data. The first step to take in order to make use of these features is, of course, to load the IMU calibration dataset using either the function `read.imu()` (specifically  tailored to loading certain IMU  measurements) or the general `R` function `read.table()`. 
 
-Two estimators are implemented in the `avar` package. A simple example with simulated data is given here:
+Below we provide several examples with real inertial data from the `imudata` package. Our first example is based on the signal issued from a MEMS IMU (XSens MTi-G) which is simply saved in a matrix format: 
 
 ```r
-# Simulate white noise
-n = 10^4   
-Xt = gen_gts(n = n, WN(sigma2 = 1))
-
-# Compute (Maximal Overlap) AV
-Xt_av = avar(Xt)
-Xt_av
-```
-
-```out
-##  Levels: 
-##  [1]    2    4    8   16   32   64  128  256  512 1024 2048 4096
-## 
-##  Allan Variances: 
-##  [1] 0.51158339 0.24744204 0.11787223 0.05902477 0.02957823 0.01604152
-##  [7] 0.00833642 0.00561614 0.00275575 0.00098946 0.00092515 0.00014253
-## 
-##  Type: 
-## [1] "mo"
+library(imudata)
+data("imu6")
+head(imu6)
 ```
 
 ---
 
-# Log-Log plots (1/2)
-
-The standard "log-log plot" of the AV can simply be made with the function `plot()`:
+To use the data within the `gmwm` package it is preferable to first wrap the data within an objecto of type imu:
 
 ```r
-plot(Xt_av)
+sensor = imu(imu6, 
+             gyros = 1:3,
+             accels = 4:6, 
+             axis = c('X','Y','Z','X','Y','Z'),
+             freq = 100)
 ```
 
-<div style="text-align:center"><img src="av1-1.png" alt=" " width="70%">
+We can then simply compute the WV as follows:
+
+```r
+wv_imu6 = wvar(sensor)
+wv_imu6
+```
+---
+
+To plot the WV (and confidence intervals) for all gyroscopes and accelerometers, we can use the following function:
+
+```r
+plot(wv_imu6)
+```
 
 ---
 
-# Log-Log plots (2/2)
-
-To assess if the empirical AV is "close"" to its theoretical version, we add this quantity in red below:
+To plot the WV for each sensor type together, we can use the following:
 
 ```r
-plot(Xt_av)
-lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
+plot(wv_imu6, split = F)
 ```
 
-<div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
+---
+
+It is also possible to compute the robust WV on `imu` object:
+
+```r
+wv_imu6_rob = wvar(sensor, robust = TRUE)
+plot(wv_imu6_rob)
+```
+
+---
+
+The comparison between the two estimator can also be done using the function `compare_wvar()`:
+
+```r
+compare_wvar(wv_imu6, wv_imu6_rob) 
+```
+
+---
+
+
+Next, we present a few additional examples based on datasets we presented in the previous chapters. 
+
+```r
+data("navchip")
+plot(wvar(navchip))
+```
+
+---
+
+```r
+data("imar.gyro")
+plot(wvar(imar.gyro))
+```
+
+---
+
+```r
+data("ln200.gyro")
+plot(wvar(ln200.gyro))
+```
+
+---
+
+```r
+data("ln200.accel")
+plot(wvar(ln200.accel))
+```
 
 ---
