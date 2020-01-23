@@ -11,13 +11,13 @@ id: 2
 
 <exercise id="1" title="General Information">
 
-In this chapter we will consider an introduction to time series analysis from standard statistical standpoint. This chapter is based on the R package [`simts`](https://smac-group.github.io/simts/index.html), which can be installed as follows:
+In this chapter we will consider an introduction to time series analysis from standard statistical standpoint. This chapter is based on the R package [`simts`](https://smac-group.github.io/simts/index.html). This package is currently being modified and is likely to change significantly in the coming months. Therefore, we recommend to install the *development* version of the package as follows:
 
 ```r
-# Cran (stable) version
-install.packages("simts")
+# Install devtools
+install.packages("devtools")
 
-# Developpement version
+# Install simts from GitHub
 devtools::install_github("SMAC-Group/simts")
 ```
 
