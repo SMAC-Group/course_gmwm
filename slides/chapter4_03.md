@@ -17,6 +17,16 @@ data("imu6")
 head(imu6)
 ```
 
+```out
+    Gyro. X   Gyro. Y   Gyro. Z Accel. X Accel. Y Accel. Z
+1 -0.011138 -0.017646 -0.009531 1.083731 0.023897 9.638113
+2 -0.006765 -0.013657 -0.021974 1.059858 0.042061 9.646901
+3 -0.002779 -0.010913 -0.024058 1.060207 0.023655 9.665417
+4 -0.006934 -0.021248 -0.018351 1.059921 0.027322 9.633001
+5 -0.008164 -0.015213 -0.026140 1.069064 0.032950 9.643449
+6 -0.004907 -0.026742 -0.011087 1.049330 0.012485 9.658759
+```
+
 ---
 
 To use the data within the `gmwm` package it is preferable to first wrap the data within an objecto of type imu:
@@ -33,7 +43,15 @@ We can then simply compute the WV as follows:
 
 ```r
 wv_imu6 = wvar(sensor)
-wv_imu6
+attributes(wv_imu6)
+```
+
+```out
+$names
+[1] "dataobj" "axis"    "sensor"  "stype"   "freq"   
+
+$class
+[1] "wvar.imu"
 ```
 ---
 
@@ -43,6 +61,8 @@ To plot the WV (and confidence intervals) for all gyroscopes and accelerometers,
 plot(wv_imu6)
 ```
 
+<div style="text-align:center"><img src="gmwm7-1.png" alt=" " width="75%">
+
 ---
 
 To plot the WV for each sensor type together, we can use the following:
@@ -50,6 +70,7 @@ To plot the WV for each sensor type together, we can use the following:
 ```r
 plot(wv_imu6, split = F)
 ```
+<div style="text-align:center"><img src="gmwm8-1.png" alt=" " width="75%">
 
 ---
 
@@ -60,6 +81,7 @@ wv_imu6_rob = wvar(sensor, robust = TRUE)
 plot(wv_imu6_rob)
 ```
 
+<div style="text-align:center"><img src="gmwm9-1.png" alt=" " width="85%">
 ---
 
 The comparison between the two estimator can also be done using the function `compare_wvar()`:
@@ -67,6 +89,8 @@ The comparison between the two estimator can also be done using the function `co
 ```r
 compare_wvar(wv_imu6, wv_imu6_rob) 
 ```
+
+<div style="text-align:center"><img src="gmwm10-1.png" alt=" " width="100%">
 
 ---
 
@@ -78,12 +102,15 @@ data("navchip")
 plot(wvar(navchip))
 ```
 
+<div style="text-align:center"><img src="gmwm11-1.png" alt=" " width="75%">
 ---
 
 ```r
 data("imar.gyro")
 plot(wvar(imar.gyro))
 ```
+
+<div style="text-align:center"><img src="gmwm12-1.png" alt=" " width="75%">
 
 ---
 
@@ -92,11 +119,12 @@ data("ln200.gyro")
 plot(wvar(ln200.gyro))
 ```
 
+<div style="text-align:center"><img src="gmwm13-1.png" alt=" " width="75%">
 ---
 
 ```r
 data("ln200.accel")
 plot(wvar(ln200.accel))
 ```
-
+<div style="text-align:center"><img src="gmwm14-1.png" alt=" " width="75%">
 ---
