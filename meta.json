@@ -1,7 +1,7 @@
 {
     "courseId": "course-gmwm",
-    "title": "An Introduction to Inertial Sensor Stochastic Calibration",
-    "slogan": "A free online course",
+    "title": "Inference for large-scale time series with application to sensor fusion",
+    "slogan": "An online course",
     "description": "This course will presents an Introduction to Inertial Sensor Stochastic Calibration",
     "bio": "Stephane Guerrier obtained a M.Sc. in navigation techniques and geomatics engineering from the Swiss Federal Institute of Technology Lausanne (EPFL) in 2008 for his work on the integration of redundant MEMS-IMUs with GPS. He also obtained a Ph.D in statistics from the University of Geneva in 2013. His research focuses on time series and model selection. He is now an Assistant Professor in the Department of Statistics of the Pennsylvania State University.",
     "siteUrl": "https://gmwm.netlify.com/",

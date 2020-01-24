@@ -71,7 +71,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-                                        Jan Skaloud is a Senior Scientist, member of the Geodetic Engineering Laboratory - EPFL
+                                        Jan Skaloud is a senior scientist and lecturer at the Swiss Federal Institute of Technology Lausanne (EPFL) and Adjunct Professor at the Department of Geomatics Engineering at The University of Calgary. His research is related to methodologies and applications in sensor fusion for autonomous navigation, precise positioning, attitude determination and mobile mapping. He is a member and active participant in numerous international professional and scientific organisations in this field. 
                                         </p>
                                             
                                     </section>
