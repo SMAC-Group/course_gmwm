@@ -11,18 +11,22 @@ It is possible to plot the theoretical ACF of most time series with `simts`. For
 ```r
 par(mfrow=c(2,2))
 plot(theo_acf(ar = 0.9, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.9")))
+     main = expression(paste("Theoretical ACF plot of AR(1) with ",
+     phi, " = 0.9")))
 plot(theo_acf(ar = 0.5, ma = NULL),
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.5")))
+     main = expression(paste("Theoretical ACF plot of AR(1) with ",
+     phi, " = 0.5")))
 plot(theo_acf(ar = -0.9, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = -0.9")))
+     main = expression(paste("Theoretical ACF plot of AR(1) with ",
+     phi, " = -0.9")))
 plot(theo_acf(ar = 0.1, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.1")))
+     main = expression(paste("Theoretical ACF plot of AR(1) with ",
+     phi, " = 0.1")))
 ```
 
 ---
 
-<div style="text-align:center"><img src="chap2_7-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="chap2_7-1.png" alt=" " width="90%">
 
 ---
 
@@ -33,7 +37,8 @@ set.seed(182)          # seed for reproducibility
 
 par(mfrow=c(2,2))
 plot(theo_acf(ar = 0.9, ma = NULL), 
-     main = expression(paste("Theoretical ACF plot of AR(1) with ", phi, " = 0.9")))
+     main = expression(paste("Theoretical ACF plot of AR(1) with ",
+     phi, " = 0.9")))
 
 Xt = gen_gts(n = 50, model = AR1(phi = 0.9, sigma2 = 1))
 plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 50")
@@ -47,7 +52,7 @@ plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 5000")
 
 ---
 
-<div style="text-align:center"><img src="chap2_7-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="chap2_8-1.png" alt=" " width="90%">
 
 ---
 
@@ -59,7 +64,7 @@ plot(theo_acf(ar = 0.95, ma = NULL))
 plot(theo_pacf(ar = 0.95, ma = NULL))
 ```
 
-<div style="text-align:center"><img src="chap2_9-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="chap2_9-1.png" alt=" " width="100%">
 
 ---
 
@@ -69,7 +74,7 @@ plot(theo_acf(ar = c(0.5, 0.125, 0.25), ma = NULL))
 plot(theo_pacf(ar = c(0.5, 0.125, 0.25), ma = NULL))
 ```
 
-<div style="text-align:center"><img src="chap2_10-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="chap2_10-1.png" alt=" " width="100%">
 
 ---
 
@@ -83,14 +88,15 @@ Xt = gen_gts(n = 300, model = AR(phi = c(0.5, 0.125, 0.25), sigma2 = 1))
 corr_analysis(Xt)
 
 ```
-<div style="text-align:center"><img src="chap2_11-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="chap2_11-1.png" alt=" " width="90%">
 
 ---
 
 Therefore, these examples give us further insight as to how to interpret the empirical (or estimated) versions of these functions. For this reason, let us study the empirical ACF and PACF of some real time series, the first of which is the data representing the natural logarithm of the annual number of Lynx trappings in Canada between 1821 and 1934. The time series is represented below.
 
 ```r
-lynx_gts = gts(log(lynx), start = 1821, data_name = "Lynx Trappings", unit_time = "year", name_ts = "Trappings")
+lynx_gts = gts(log(lynx), start = 1821, data_name = "Lynx Trappings",
+unit_time = "year", name_ts = "Trappings")
 plot(lynx_gts)
 ```
 
@@ -104,7 +110,7 @@ We can see that there appears to be a seasonal trend within the data but let us 
 corr_analysis(lynx_gts)
 ```
 
-<div style="text-align:center"><img src="chap2_13-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="chap2_13-1.png" alt=" " width="100%">
 
 ---
 

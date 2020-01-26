@@ -12,9 +12,9 @@ id: 1
 
 The sildes for chapter one can be downloaded [here](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap1.pdf). 
 
-Main references:
+Main reference:
 
-1.
+1. Gelb, A. (1988). Applied Optimal Estimation. Cambridge, MA: The M.I.T. Press.
 
 
 </exercise>
