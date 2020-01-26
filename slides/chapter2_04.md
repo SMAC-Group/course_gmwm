@@ -22,6 +22,10 @@ plot(theo_acf(ar = 0.1, ma = NULL),
 
 ---
 
+<div style="text-align:center"><img src="chap2_7-1.png" alt=" " width="80%">
+
+---
+
 The theoretical ACF of a process can also be compared with the empirical ACF. For example:
 
 ```r
@@ -43,6 +47,9 @@ plot(auto_corr(Xt, lag.max = 20), main = "Simulated AR(1) with n = 5000")
 
 ---
 
+<div style="text-align:center"><img src="chap2_7-1.png" alt=" " width="80%">
+
+---
 
 The `simts` also allows to compute the theoretical ACF and PACF. Below are examples for an AR(1) as well as an AR(3):
 
@@ -52,6 +59,8 @@ plot(theo_acf(ar = 0.95, ma = NULL))
 plot(theo_pacf(ar = 0.95, ma = NULL))
 ```
 
+<div style="text-align:center"><img src="chap2_9-1.png" alt=" " width="80%">
+
 ---
 
 ```r
@@ -59,6 +68,8 @@ par(mfrow = c(1, 2))
 plot(theo_acf(ar = c(0.5, 0.125, 0.25), ma = NULL))
 plot(theo_pacf(ar = c(0.5, 0.125, 0.25), ma = NULL))
 ```
+
+<div style="text-align:center"><img src="chap2_10-1.png" alt=" " width="80%">
 
 ---
 
@@ -70,7 +81,9 @@ Xt = gen_gts(n = 300, model = AR(phi = c(0.5, 0.125, 0.25), sigma2 = 1))
 
 # Plot empirical ACF/PACF
 corr_analysis(Xt)
+
 ```
+<div style="text-align:center"><img src="chap2_11-1.png" alt=" " width="80%">
 
 ---
 
@@ -81,6 +94,8 @@ lynx_gts = gts(log(lynx), start = 1821, data_name = "Lynx Trappings", unit_time 
 plot(lynx_gts)
 ```
 
+<div style="text-align:center"><img src="chap2_12-1.png" alt=" " width="70%">
+
 ---
 
 We can see that there appears to be a seasonal trend within the data but let us ignore this for the moment and check the ACF and PACF plots below.
@@ -88,6 +103,8 @@ We can see that there appears to be a seasonal trend within the data but let us 
 ```r
 corr_analysis(lynx_gts)
 ```
+
+<div style="text-align:center"><img src="chap2_13-1.png" alt=" " width="80%">
 
 ---
 
