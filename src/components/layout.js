@@ -46,6 +46,7 @@ const Layout = ({ isHome, title, description, children }) => {
                                 {(title || description) && (
                                     <header className={classes.header}>
                                         {title && <h1 className={classes.title}>{title}</h1>}
+                                        <br/>
                                         {description && (
                                             <p className={classes.description}>{description}</p>
                                         )}

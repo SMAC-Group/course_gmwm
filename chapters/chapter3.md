@@ -73,19 +73,19 @@ Main references:
 
 <exercise id="5" title="Exercises">
 
-<exercise id="1" title="Exercise 1">
+<exercise id="6" title="Exercise 1">
  
 </exercise>
 
-<exercise id="2" title="Exercise 2">
+<exercise id="7" title="Exercise 2">
  
 </exercise>
 
-<exercise id="3" title="Exercise 3">
+<exercise id="8" title="Exercise 3">
  
 </exercise>
 
-<exercise id="4" title="Exercise 4">
+<exercise id="9" title="Exercise 4">
  
 </exercise>
 
