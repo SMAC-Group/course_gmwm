@@ -16,6 +16,8 @@ Xt = gen_gts(n, WN(sigma2 = sigma2))
 plot(Xt)
 ```
 
+<div style="text-align:center"><img src="chap2_3-1.png" alt=" " width="65%">
+
 ---
 
 Similarly, for a random walk (RW):
@@ -27,6 +29,8 @@ gamma2 = 1                             # process variance
 Xt = gen_gts(n, RW(gamma2 = gamma2))
 plot(Xt)
 ```
+
+<div style="text-align:center"><img src="chap2_4-1.png" alt=" " width="65%">
 
 ---
 
@@ -48,6 +52,8 @@ Xt = gen_lts(n = n, model = model)
 plot(Xt)
 ```
 
+<div style="text-align:center"><img src="chap2_5-1.png" alt=" " width="60%">
+
 ---
 
 Equivalently, composite stochastic processes can also be simulated with plotting (and returning) the latent processes as follows:
@@ -57,4 +63,6 @@ set.seed(18)
 Xt = gen_gts(n = n, model = model)
 plot(Xt)
 ```
+
+<div style="text-align:center"><img src="chap2_6-1.png" alt=" " width="80%">
 ---

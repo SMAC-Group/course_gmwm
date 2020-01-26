@@ -28,6 +28,8 @@ hydro = gts(as.vector(hydro), start = 1907, freq = 12, unit_ts = "in.",
 plot(hydro)
 ```
 
+<div style="text-align:center"><img src="chap2_1-1.png" alt=" " width="85%">
+
 ---
 
 Let us consider the limitations of a direct graphical representation of a time series when the sample size is large. Indeed, due to visual limitations, a direct plotting of the data will probably result in an uninformative aggregation of points between which it is unable to distinguish anything. For example, we consider here the data coming from the calibration procedure of an Inertial Measurement Unit (IMU) which, in general terms, is used to enhance navigation precision or reconstruct three dimensional movements. These sensors are used in a very wide range of applications such as robotics, virtual reality, vehicle stability control, human and animal motion capture and so forth. The signals coming from these instruments are measured at high frequencies over a long time and are often characterized by linear trends and numerous underlying stochastic processes. The code below retrieves some data from an IMU and plots it directly. First, we install the imudata which is hosted on GitHub:
@@ -59,3 +61,7 @@ Xt = gts(imu6[,1], data_name = "Gyroscope data", unit_time = "hour",
 # Plot time series
 plot(Xt)
 ```
+<div style="text-align:center"><img src="chap2_2-1.png" alt=" " width="85%">
+
+
+

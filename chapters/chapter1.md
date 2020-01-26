@@ -10,7 +10,7 @@ id: 1
 
 <exercise id="1" title="General Information">
 
-The sildes for chapter one can be downloaded [here](). 
+The sildes for chapter one can be downloaded [here](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap1.pdf). 
 
 Main references:
 
