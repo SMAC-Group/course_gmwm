@@ -2,59 +2,78 @@
 type: slides
 ---
 
-# Computing the Allan Variance
+# Case Study: Copper Price
 
 ---
 
-# The avar function
-
-Two estimators are implemented in the `avar` package. A simple example with simulated data is given here:
+Let us consider a time series of the annual copper prices from 1800 to 1997 (with the long-term trend removed) which can be downloaded in R via the `tsdl` library. To obtain the data, we should first install the `tsdl` R package:
 
 ```r
-# Simulate white noise
-n = 10^4   
-Xt = gen_gts(n = n, WN(sigma2 = 1))
-
-# Compute (Maximal Overlap) AV
-Xt_av = avar(Xt)
-Xt_av
-```
-
-```out
-##  Levels: 
-##  [1]    2    4    8   16   32   64  128  256  512 1024 2048 4096
-## 
-##  Allan Variances: 
-##  [1] 0.51158339 0.24744204 0.11787223 0.05902477 0.02957823 0.01604152
-##  [7] 0.00833642 0.00561614 0.00275575 0.00098946 0.00092515 0.00014253
-## 
-##  Type: 
-## [1] "mo"
+devtools::install_github("FinYang/tsdl")
 ```
 
 ---
 
-# Log-Log plots (1/2)
-
-The standard "log-log plot" of the AV can simply be made with the function `plot()`:
+Then, we can run:
 
 ```r
-plot(Xt_av)
+copper_ts = as.numeric(subset(tsdl, description = "copper")[[3]])
+time = 1:length(copper_ts)
+detrend_copper_ts = lm(copper_ts ~ time)$residuals
+Xt = gts(detrend_copper_ts,
+    start = 1800, freq = 1, name_ts = "Copper prices (minus the long-term trend)",
+    data_name = "Copper Price", name_time = "")
+plot(Xt)
 ```
-
-<div style="text-align:center"><img src="av1-1.png" alt=" " width="70%">
 
 ---
 
-# Log-Log plots (2/2)
-
-To assess if the empirical AV is "close"" to its theoretical version, we add this quantity in red below:
+It would appear that the process could be considered as being stationary and, given this, let us analyse the estimated ACF and PACF plots for the considered time series.
 
 ```r
-plot(Xt_av)
-lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
+corr_analysis(Xt)
 ```
 
-<div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
+---
+
+The ACF plot could eventually suggest an AR(p) model, however the PACF plot doesn't appear to deliver an exact cut-off and both appear to tail-off with no obvious behavior that would allow to assign them to an AR(p) model or MA(q) model. Let us therefore consider all possible models included in an ARMA(4,5) model (which therefore include all possible model in an AR(4) model and in an MA(3) model). 
 
 ---
+
+```r
+best_model = select(ARMA(4,5), Xt, include.mean = FALSE)
+```
+
+---
+
+The figure above shows the behavior (and minima) of the three selection criteria discussed earlier in this chapter where each plot fixes the value of q (for the MA(q) part of the model) and explores the value of these criteria for different orders p (for the AR(p) part of the model). From the selection procedure it would appear that the BIC criterion selects a simple AR(1) model for the annual copper time series while the AIC selects an ARMA(3,5) model. This reflects the properties of these two criteria since the BIC usually selects lower order models (e.g. it can under-fit the data) while the AIC usually does the opposite (e.g. it can over-fit the data). As expected, the HQ criterion lies somewhere in between the two previous criteria and selects an ARMA(3,2) model. To obtain further information to choose a final model, one could check the behavior of the residuals from these three models.
+
+---
+
+```r
+model_copper_ar1 = estimate(AR(1), Xt)
+check(model_copper_ar1)
+```
+
+---
+
+```r
+model_copper_arma32 = estimate(ARMA(3,2), Xt)
+check(model_copper_arma32)
+```
+
+---
+
+```r
+model_copper_arma35 = estimate(ARMA(3,5), Xt)
+check(model_copper_arma35)
+```
+
+---
+
+The residuals from the ARMA(3,2) and the ARMA(3,5) appear to have an overall better behavior than the ones of the AR(1). If one were to choose a unique model for this data, the ARMA(3,2) model would appear to be a good candidate. The predictions made from this model are given below:
+
+```r
+predict(model_copper_arma32, n.head = 90, show_last = 300)
+```
+
