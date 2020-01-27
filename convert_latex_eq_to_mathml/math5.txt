@@ -1,0 +1,8 @@
+Assuming $X_t$ to be known the likelihood function would be
+
+$$L\left(\boldsymbol{\theta}\right) = f(Z_1| \boldsymbol{\theta}) \prod_{t = 2}^n f(Z_t|X_{t-1}, \boldsymbol{\theta}),$$
+where $f(Z_1|\boldsymbol{\theta})$ and $f(Z_t|X_{t-1},\boldsymbol{\theta})$ denote, respectively, the densities of $Z_1$ and $Z_t|X_{t-1}$ given $\boldsymbol{\theta}$. Therefore, we possible strategy is to compute the state based on a given value of $\boldsymbol{\theta}$, which we write as $X_{t|t}(\boldsymbol{\theta})$, and to replace it in the above definition leading to the (estimated) likelihood function:
+
+$$\hat{L}\left(\boldsymbol{\theta}\right) = f(Z_1|\boldsymbol{\theta}) \prod_{t = 2}^n f(Z_t|X_{t-1|t-1}(\boldsymbol{\theta}), \boldsymbol{\theta}).$$
+
+We can then numerically maximize this function (or its log) to obtain $\hat{\boldsymbol{\theta}}$.

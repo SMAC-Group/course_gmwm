@@ -1,0 +1,3 @@
+- Simulate a time series with sample size $n = 200$, $\rho = 0.9$, $\sigma^2_u = 1$ and $\sigma^2_v = 2$using the "seed" 16 (i.e. using `set.seed(16)`).
+- Assuming you know the true parameters (i.e. $\rho = 0.9$, $\sigma^2_u = 1$ and $\sigma^2_v = 2$), estimate the states (i.e. $X_t$) using a Kalman filter.
+- Assuming that you don't know the true parameters, compute the MLE for $\boldsymbol{\theta} = [\rho = 0.9 \;\;\ \sigma^2_u \;\; \sigma^2_v]^T$ which we denote $\hat{\boldsymbol{\theta}}$. Run a Monte-carlo simulation where you compute $\hat{\boldsymbol{\theta}}$ $B = 500$. Is MLE reliable? It is computentially intensive? To answer the last question, replicate the same simulation with $n = 2000$.
