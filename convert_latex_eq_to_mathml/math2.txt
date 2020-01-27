@@ -1,0 +1,6 @@
+\begin{align}
+\mathbb{E} \left[Z_t\right] &= 0\\
+\mathbb{E} \left[Z_t | X_{t-1}\right] &= \rho X_{t-1}\\
+\text{Var} \left(Z_t \right) &= \text{Var} \left( X_t \right) + \text{Var} \left(V_t \right) = \frac{\sigma_u^2}{1 - \rho^2} + \sigma^2_v\\
+\text{Var} \left(Z_t | X_{t-1} \right) &= \text{Var} \left( X_t | X_{t-1}\right) + \text{Var} \left(V_t \right) = \text{Var} \left(U_t \right) + \text{Var} \left(V_t \right) = \sigma_u^2 + \sigma_v^2.
+\end{align}

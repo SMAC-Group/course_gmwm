@@ -6,7 +6,7 @@ type: slides
 
 ---
 
-Time series can easily be simulated with simts. For example, to simulate a White Noise (`WN`) with variance 1.
+Time series can easily be simulated with simts. For example, to simulate a White Noise (`WN`) with \\(\sigma^2 = 1\\).
 
 ```r
 set.seed(18)                            # seed for reproducibility
