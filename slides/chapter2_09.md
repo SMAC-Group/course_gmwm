@@ -21,10 +21,13 @@ copper_ts = as.numeric(subset(tsdl, description = "copper")[[3]])
 time = 1:length(copper_ts)
 detrend_copper_ts = lm(copper_ts ~ time)$residuals
 Xt = gts(detrend_copper_ts,
-    start = 1800, freq = 1, name_ts = "Copper prices (minus the long-term trend)",
+    start = 1800, freq = 1,
+    name_ts = "Copper prices (minus the long-term trend)",
     data_name = "Copper Price", name_time = "")
 plot(Xt)
 ```
+
+<div style="text-align:center"><img src="chap2_23_1-1.png" alt=" " width="60%">
 
 ---
 
@@ -33,6 +36,9 @@ It would appear that the process could be considered as being stationary and, gi
 ```r
 corr_analysis(Xt)
 ```
+
+<div style="text-align:center"><img src="chap2_23_2-1.png" alt=" " width="100%">
+
 
 ---
 
@@ -46,6 +52,11 @@ best_model = select(ARMA(4,5), Xt, include.mean = FALSE)
 
 ---
 
+<div style="text-align:center"><img src="chap2_23_3-1.png" alt=" " width="60%">
+
+
+---
+
 The figure above shows the behavior (and minima) of the three selection criteria discussed earlier in this chapter where each plot fixes the value of q (for the MA(q) part of the model) and explores the value of these criteria for different orders p (for the AR(p) part of the model). From the selection procedure it would appear that the BIC criterion selects a simple AR(1) model for the annual copper time series while the AIC selects an ARMA(3,5) model. This reflects the properties of these two criteria since the BIC usually selects lower order models (e.g. it can under-fit the data) while the AIC usually does the opposite (e.g. it can over-fit the data). As expected, the HQ criterion lies somewhere in between the two previous criteria and selects an ARMA(3,2) model. To obtain further information to choose a final model, one could check the behavior of the residuals from these three models.
 
 ---
@@ -54,6 +65,8 @@ The figure above shows the behavior (and minima) of the three selection criteria
 model_copper_ar1 = estimate(AR(1), Xt)
 check(model_copper_ar1)
 ```
+<div style="text-align:center"><img src="chap2_23_4-1.png" alt=" " width="95%">
+
 
 ---
 
@@ -62,12 +75,16 @@ model_copper_arma32 = estimate(ARMA(3,2), Xt)
 check(model_copper_arma32)
 ```
 
+<div style="text-align:center"><img src="chap2_23_5-1.png" alt=" " width="95%">
+
 ---
 
 ```r
 model_copper_arma35 = estimate(ARMA(3,5), Xt)
 check(model_copper_arma35)
 ```
+
+<div style="text-align:center"><img src="chap2_23_6-1.png" alt=" " width="95%">
 
 ---
 
@@ -77,3 +94,4 @@ The residuals from the ARMA(3,2) and the ARMA(3,5) appear to have an overall bet
 predict(model_copper_arma32, n.head = 90, show_last = 300)
 ```
 
+<div style="text-align:center"><img src="chap2_23_7-1.png" alt=" " width="90%">
