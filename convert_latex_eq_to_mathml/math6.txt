@@ -1,0 +1,8 @@
+Simulate and create a plot of the following processes of length $T=10^3$:
+
+- An AR(1) process with $\phi= -0.85$ and $\sigma^2 = 1$,
+- An MA(1) process with $\theta = 0.9$ and $\sigma^2 = 2$
+- A drift combined with a white noise process defined as $X_t = \omega + W_t,$ where $\omega = 0.01$ and the variance of the white noise is $\sigma^2 = 2$.
+- A RW (random walk process) with innovation variance $\gamma^2=1$.
+
+By simply looking at these simulated process is it possible to guess which ones could be stationary? If so, explain your reasoning for each process.
