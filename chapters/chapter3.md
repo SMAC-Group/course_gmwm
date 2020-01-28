@@ -40,7 +40,7 @@ library(simts)
 library(avar)
 ```
 
-More information on the AV can be found ?????????. 
+The sildes we will can be downloaded [here](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap3.pdf). 
 
 Main references:
 
