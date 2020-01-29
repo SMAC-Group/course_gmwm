@@ -143,10 +143,13 @@ plot(Xt)
 
 <div style="text-align:center"><img src="exo_chap2_1-1.png" alt=" " width="90%">
 
-- Comment on the plot of the time series: does it appear to be stationary?
-- If not stationary, use a linear regression to remove possible trends and/or seasonalities.
-- Perform a diagnostic analysis on the residuals: does there appear to be dependence between lags?
-- If there appears to be dependence in the residuals, propose and estimate a time series model for them. Justify the model.
+</div>
+<ul>
+<li>Comment on the plot of the time series: does it appear to be stationary?</li>
+<li>If not stationary, use a linear regression to remove possible trends and/or seasonalities.</li>
+<li>Perform a diagnostic analysis on the residuals: does there appear to be dependence between lags?</li>
+<li>If there appears to be dependence in the residuals, propose and estimate a time series model for them. Justify the model.</li>
+</ul>
 
 # Estimation of latent time series models
 
