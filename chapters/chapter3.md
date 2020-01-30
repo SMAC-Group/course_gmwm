@@ -66,7 +66,7 @@ Main references:
 
 <exercise id="5" title="Exercises">
 
-# Estimate a white using the Allan variance
+# Estimate a white noise using the Allan variance
 
 Let \\(X_t\\) be an WN with variance \\(\sigma^2\\) and length \\(N\\).
 
