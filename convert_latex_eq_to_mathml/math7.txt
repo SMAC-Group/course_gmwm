@@ -1,4 +1,4 @@
-- Comment on the plot of the time series: does it appear to be stationary?
-- If not stationary, use a linear regression to remove possible trends and/or seasonalities.
-- Perform a diagnostic analysis on the residuals: does there appear to be dependence between lags?
-- If there appears to be dependence in the residuals, propose and estimate a time series model for them. Justify the model.
+- Write an R function that computes the AVAR of the input (`avar` function) and estimates $\hat \sigma^2$ (use Equation 3.10 and 3.11). 
+- Chose a value for $\sigma^2$ and $N$, e.g., $1$ and $1000$, and generate $M$ realization of $X_t$.
+- Compare the perfomances of the two estimators (use the `boxplot` R function).
+- What is the difference?

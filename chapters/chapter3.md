@@ -66,21 +66,52 @@ Main references:
 
 <exercise id="5" title="Exercises">
 
-<exercise id="6" title="Exercise 1">
- 
-</exercise>
+# Estimate a white using the Allan variance
 
-<exercise id="7" title="Exercise 2">
- 
-</exercise>
+Let \\(X_t\\) be an WN with variance \\(\sigma^2\\) and length \\(N\\).
 
-<exercise id="8" title="Exercise 3">
- 
-</exercise>
+- Write an R function that returns the ML estimator for \\(\sigma^2\\), i.e.
 
-<exercise id="9" title="Exercise 4">
- 
-</exercise>
+$$
+\hat\sigma^2 = N^{-1}\sum^{N} X_t^2
+$$
+- Write an R function that computes the AVAR of the input (`avar` function) and estimates \\(\hat \sigma^2\\) (use Equation 3.10 and 3.11). 
+- Chose a value for \\(\sigma^2\\) and \\(N\\), e.g., \\(1\\) and \\(1000\\), and generate \\(M\\) realization of \\(X_t\\).
+- Compare the perfomances of the two estimators (use the `boxplot` R function).
+- What is the difference?
+
+
+
+# A more complex case?
+
+Consider \\(X_t\\) (lenght \\(T = 10^5\\)) to be the sum of a white noise and a random walk with parameters \\(\sigma^2=1\\) and \\(\gamma^2=10^{-4}\\).
+
+- From one realisation of the process, select the scales to be used to estimate the parameters of the two processes with the `avlr` function.
+- Generate \\(N = 100\\) realisations of \\(X_t\\).
+- Use the `avlr` function  to estimate \\(\sigma^2\\) and \\(\gamma^2\\).
+- Compare the estimates of \\(\sigma^2\\) and \\(\gamma^2\\) with the true values.
+- Are the estimates good?
+
+# Let's try our best on a real case
+
+Consider the Y axis of the accelerometer of the ADIS IMU.
+
+```r
+library(avar)
+data("adis_av")
+plot(adis_av$avar$`Accel. Y`)
+```
+
+<div style="text-align:center"><img src="adis_accel_y.png" alt=" " width="85%">
+</div>
+
+Decide which are the most appropriate processes, select the appropriate scales and estimate the model parameters using the `avar` function.
+
+# How can we do better? Let's guess
+
+- Take the paper Zhang, Nien Fan. "Allan variance of time series models for measurement data." *Metrologia* 45.5 (2008): 549.
+- Equation 30 gives the analytical expression for the Allan Variance for an AR1 process.
+- Given the observed AVAR of an AR1 process, how could you construct an estimator for \\(\phi\\) and \\(\sigma^2\\)?
 
 </exercise>
 
