@@ -161,5 +161,6 @@ plot(mod_Yt_rob)
 ```
 <div style="text-align:center"><img src="gmwm17-1.png" alt=" " width="100%">
 
+---
 
 In this case, the result are much closer to the ones obtained on `Xt` and illustrates the robustness of the estimator.
