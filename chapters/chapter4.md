@@ -29,22 +29,23 @@ devtools::install_github("SMAC-Group/imudata")
 
 Note that the installation process may be a little slow.
 
-The sildes we will can be downloaded [here](TO BE FILLED). 
+The sildes we will can be downloaded [here](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap4_1.pdf). 
 
-Suggested reading:
-
-1. El-Sheimy, N., H. Hou, and X. Niu *Analysis and Modeling of Inertial Sensors using Allan Variance*, IEEE Transactions on Instrumentation and Measurement 57.1, 2008.
-2. Guerrier, S., R. Molinari, and Y. Stebler *Theoretical Limitations of Allan Variance-based Regression for Time Series Model Estimation*, IEEE Signal Processing Letters 23.5, 2016.
 
 Main references:
 
-1. Allan, D. W. *Statistics of Atomic Frequency Standards*, Proceedings of the IEEE 54.2, 1966.
-2. El-Sheimy, N., H. Hou, and X. Niu *Analysis and Modeling of Inertial Sensors using Allan Variance*, IEEE Transactions on Instrumentation and Measurement 57.1, 2008.
-3. Greenhall, C. A. *Spectral Ambiguity of Allan Variance*, IEEE Transactions on Instrumentation and Measurement 47.3, 1998.
-4. Guerrier, S., J. Jurado, M. Khaghani, G. Bakalli, M. Karemera, R. Molinari, S. Orso, J. Raquet, C. Schubert Kabban, J. Skaloud, H. Xu and Y. Zhang *Wavelet-Based Moment-Matching Techniques for Inertial Sensor Calibration*, submitted working paper, 2020, full text available on [arXiv](https://arxiv.org/abs/1911.07049).
-5. Guerrier, S., R. Molinari, and J. Balamuta *Discussion on Maximum Likelihood-Based Methods for Inertial Sensor Calibration*, IEEE Sensors Journal 16.14, 2016.
-6. Guerrier, S., R. Molinari, and Y. Stebler *Theoretical Limitations of Allan Variance-based Regression for Time Series Model Estimation*, IEEE Signal Processing Letters 23.5, 2016.
-7. Percival, D. B. and P. Guttorp *Long-memory processes, the Allan variance and wavelets*, Wavelet Analysis and its Applications. Vol. 4. Elsevier, 1994.
+1. Guerrier, S., Molinari, R., Victoria-Feser, M. P., & Xu, H. (2020). *Robust Two-Step Wavelet-Based Inference for Time Series Models*, arXiv preprint arXiv:2001.04214.
+
+2. Guerrier, S., Skaloud, J., Stebler, Y., & Victoria-Feser, M. P. (2013). *Wavelet-variance-based estimation for composite stochastic processes*, Journal of the American Statistical Association, 108(503), 1021-1030.
+
+Suggested reading:
+
+1. Percival, D. P. (1995). *On estimation of the wavelet variance. Biometrika*, 82(3), 619-631.
+
+2. Mondal, D., & Percival, D. B. (2012). *M-estimation of wavelet variance*, Annals of the Institute of Statistical Mathematics, 64(1), 27-53.
+
+3. Guerrier, S., R. Molinari, and J. Balamuta *Discussion on Maximum Likelihood-Based Methods for Inertial Sensor Calibration*, IEEE Sensors Journal 16.14, 2016.
+
 
 </exercise>
 
@@ -89,13 +90,6 @@ Main references:
 <exercise id="7" title="Case Study: Saving rates">
 
 <slides source="chapter4_08"> 
-</slides>
-
-</exercise>
-
-<exercise id="8" title="KVH1750 - Accel">
-
-<slides source="chapter4_09"> 
 </slides>
 
 </exercise>
