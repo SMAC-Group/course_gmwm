@@ -79,29 +79,21 @@ Main references:
 
 </exercise>
 
-
-<exercise id="6" title="The Generalized Method of Wavelet Moments for Inertial Sensors Calibration">
-
-<slides source="chapter4_06"> 
-</slides>
-
-</exercise>
-
-<exercise id="7" title="Case Study: Hydrology">
+<exercise id="6" title="Case Study: Hydrology">
 
 <slides source="chapter4_07"> 
 </slides>
 
 </exercise>
 
-<exercise id="8" title="Case Study: Saving rates">
+<exercise id="7" title="Case Study: Saving rates">
 
 <slides source="chapter4_08"> 
 </slides>
 
 </exercise>
 
-<exercise id="9" title="KVH1750 - Accel">
+<exercise id="8" title="KVH1750 - Accel">
 
 <slides source="chapter4_09"> 
 </slides>
