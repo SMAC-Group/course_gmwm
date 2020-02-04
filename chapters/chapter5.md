@@ -1,16 +1,16 @@
 ---
-title: '4 - GMWM'
+title: '5 - The Generalized Method of Wavelet Moments for Inertial Sensors Calibration'
 description:
   ' '
-prev: /chapter3
-next: /chapter5
+prev: /chapter4
+next: /null
 type: chapter
-id: 4
+id: 5
 ---
 
 <exercise id="1" title="General Information">
 
-This repository holds the Generalized Method of Wavelet Moments (GMWM) R package. This estimation technique was introduces in [Guerrier et al. (2013)](https://doi.org/10.1080/01621459.2013.799920) and uses the wavelet variances in a moment-matching spirit to estimate parameters of time series models such as ARMA or state-space models. This package is currently being modified and is likely to change significantly in the coming months. The *development* version of the package is available on [GitHub](https://github.com/SMAC-Group/gmwm) and can be installed as follows:
+This repository holds the Generalized Method of Wavelet Moments (GMWM) R package. This estimation technique was introduces in Guerrier et al. (2013) and uses the wavelet variance in a moment-matching spirit to estimate parameters of time series models such as ARMA or state-space models. This package is currently being modified and is likely to change significantly in the coming months. The *development* version of the package is available on [GitHub](https://github.com/SMAC-Group/gmwm) and you can installed as follows:
 
 ```r
 # Install dependencies
@@ -22,12 +22,12 @@ devtools::install_github("SMAC-Group/gmwm")
 
 The main features of the package are presented in the sections below and will use data from the `imudata` R package, which can be installed as:
 
-```r
+```{r, eval=FALSE}
 # Install/Update the package from GitHub
 devtools::install_github("SMAC-Group/imudata")
 ```
 
-Note that the installation process may be a little slow.
+Note that the installation process may be a little slow. 
 
 The sildes we will can be downloaded [here](TO BE FILLED). 
 
@@ -64,7 +64,14 @@ Main references:
 </exercise>
 
 
-<exercise id="4" title="The Generalized Method of Wavelet Moments">
+<exercise id="4" title="Computing the Wavelet Variance of an IMU">
+
+<slides source="chapter4_03"> 
+</slides>
+
+</exercise>
+
+<exercise id="5" title="The Generalized Method of Wavelet Moments">
 
 <slides source="chapter4_04"> 
 </slides>
@@ -72,7 +79,7 @@ Main references:
 </exercise>
 
 
-<exercise id="5" title="Model Selection">
+<exercise id="6" title="Model Selection">
 
 <slides source="chapter4_05"> 
 </slides>
@@ -80,30 +87,9 @@ Main references:
 </exercise>
 
 
-<exercise id="6" title="The Generalized Method of Wavelet Moments for Inertial Sensors Calibration">
+<exercise id="7" title="The Generalized Method of Wavelet Moments for Inertial Sensors Calibration">
 
 <slides source="chapter4_06"> 
-</slides>
-
-</exercise>
-
-<exercise id="7" title="Case Study: Hydrology">
-
-<slides source="chapter4_07"> 
-</slides>
-
-</exercise>
-
-<exercise id="8" title="Case Study: Saving rates">
-
-<slides source="chapter4_08"> 
-</slides>
-
-</exercise>
-
-<exercise id="9" title="KVH1750 - Accel">
-
-<slides source="chapter4_09"> 
 </slides>
 
 </exercise>

@@ -50,13 +50,15 @@ It is possible to compare the two estimators using the function `compare_wvar()`
 compare_wvar(wv_Xt, wv_Xt_rob)
 ```
 
-<div style="text-align:center"><img src="gmwm3-1.png" alt=" " width="53%">
+<div style="text-align:center"><img src="gmwm3-1.png" alt=" " width="95%">
+
+---
 
 ```r
 compare_wvar(wv_Xt, wv_Xt_rob, split = FALSE)
 ```
 
-<div style="text-align:center"><img src="gmwm4-1.png" alt=" " width="53%">
+<div style="text-align:center"><img src="gmwm4-1.png" alt=" " width="95%">
 ---
 
 In this example, the classical and robust WV are very close. To illustrate the difference between the two estimators, we can consider a "contaminated" version of `Xt` where outliers are randomly added:
@@ -82,13 +84,15 @@ We can now compare the differences between estimators:
 compare_wvar(wv_Xt, wv_Xt_rob, wv_Yt, wv_Yt_rob)
 ```
 
-<div style="text-align:center"><img src="gmwm5-1.png" alt=" " width="47%">
+<div style="text-align:center"><img src="gmwm5-1.png" alt=" " width="95%">
+
+---
 
 ```r
 compare_wvar(wv_Xt, wv_Xt_rob, wv_Yt, wv_Yt_rob, split = FALSE)
 ```
 
-<div style="text-align:center"><img src="gmwm6-1.png" alt=" " width="47%">
+<div style="text-align:center"><img src="gmwm6-1.png" alt=" " width="90%">
 
 Clearly, the standard WV is heavily impacted by the outliers while the robust remains more or less stable.
 
