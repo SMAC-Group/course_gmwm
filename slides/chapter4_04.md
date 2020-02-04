@@ -24,7 +24,7 @@ It  must be underlined  that  a  first-order  auto-regressive  process  (`AR1()`
 
 To illustrate how the function `gmwm()` can be used, we start by considering the AR1() with measurement error we discussed previously.
 
-```{r, cache=TRUE}
+```r
 library(gmwm)
 mod = gmwm(AR1() + WN(), Xt)
 summary(mod)
@@ -63,7 +63,7 @@ plot(mod)
 
 The "true" data generating used to generate `Xt` was given by
 
-```{r}
+```r
 model
 ```
 
@@ -81,7 +81,7 @@ model
 
 and therefore the GMWM provides reasonable estimated parameters. We can repeat the same process with the perturbed version of `Xt` which we called `Yt`:
 
-```{r, cache=TRUE}
+```r
 mod_Yt = gmwm(AR1() + WN(), Yt)
 summary(mod_Yt)
 ```
@@ -109,7 +109,7 @@ summary(mod_Yt)
 
 ---
 
-```{r gmwm16, fig.align='center', fig.width=8, fig.height=4, cache=TRUE}
+```r
 plot(mod_Yt)
 ```
 
@@ -120,7 +120,7 @@ plot(mod_Yt)
 
 In this case, the estimation is quite poor and, for example, the variance of the `WN()` is largely overestimated. Alternatively, we can used the robust estimator as follows:
 
-```{r, cache=TRUE}
+```r
 mod_Yt_rob = gmwm(AR1() + WN(), Yt, robust = TRUE)
 summary(mod_Yt_rob)
 ```
@@ -149,7 +149,7 @@ summary(mod_Yt_rob)
 
 ---
 
-```{r gmwm17, fig.align='center', fig.width=8, fig.height=4, cache=TRUE}
+```r
 plot(mod_Yt_rob)
 ```
 <div style="text-align:center"><img src="gmwm17-1.png" alt=" " width="100%">
