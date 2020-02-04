@@ -1,7 +1,6 @@
 ---
-title: '5 - The Generalized Method of Wavelet Moments for Inertial Sensors Calibration'
-description:
-  ' '
+title: '5 -  Application to Inertial Sensor Calibration'
+description: 'In this chapter, we discuss how the Generalized Method of Wavelet Moments can be used for to purpose of inertial sensor stochastic calibration. We present numerous examples with different kind of sensors.'
 prev: /chapter4
 next: /null
 type: chapter

@@ -1,7 +1,6 @@
 ---
-title: '4 - GMWM'
-description:
-  ' '
+title: '4 - The Generalized Method of Wavelet Moments'
+description: 'In this chapter, we provides an introduction to Generalized Method of Wavelet Moments and its robust extension. This chapter is based on the R package gmwm.'
 prev: /chapter3
 next: /chapter5
 type: chapter
