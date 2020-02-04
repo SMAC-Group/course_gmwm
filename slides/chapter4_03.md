@@ -22,8 +22,6 @@ The `gmwm` allows to estimate the parameters of various time series models in an
 
 It  must be underlined  that  a  first-order  auto-regressive  process  (`AR1()`)  is an one-to-one  reparametrization  of  a Gauss-Markov process (`GM()`). The  latent  processes  underlying  the  error  signal,  whose  parameters  need  to  be  estimated,  can  be  specified  by simply adding the different processes mentioned above via the `+` operator. However, there are some limits to how many times a process can be included in a model. In particular, only the `GM()` or `AR1()` models can be included more than once (say `k` times) by specifying, for example, `k*GM()` while the other processes can be included only once within the same model.
 
----
-
 To illustrate how the function `gmwm()` can be used, we start by considering the (`AR1()`) with measurement error we discussed previously.
 
 ---
@@ -31,6 +29,14 @@ To illustrate how the function `gmwm()` can be used, we start by considering the
 ```r
 library(gmwm)
 mod = gmwm(AR1() + WN(), Xt)
+plot(mod)
+```
+
+<div style="text-align:center"><img src="gmwm15-1.png" alt=" " width="100%">
+
+---
+
+```r
 summary(mod)
 ```
 
@@ -57,14 +63,6 @@ summary(mod)
 
 ---
 
-```r
-plot(mod)
-```
-
-<div style="text-align:center"><img src="gmwm15-1.png" alt=" " width="100%">
-
----
-
 The "true" data generating used to generate `Xt` was given by
 
 ```r
@@ -80,8 +78,6 @@ model
 ##      WN           1.00
 ## The model will be initiated using the initial values you supplied.
 ```
-
----
 
 and therefore the GMWM provides reasonable estimated parameters. We can repeat the same process with the perturbed version of `Xt` which we called `Yt`:
 
@@ -119,10 +115,8 @@ summary(mod_Yt)
 plot(mod_Yt)
 ```
 
-<div style="text-align:center"><img src="gmwm16-1.png" alt=" " width="100%">
+<div style="text-align:center"><img src="gmwm16-1.png" alt=" " width="100%"></div>
 
-
----
 
 In this case, the estimation is quite poor and, for example, the variance of the `WN()` is largely overestimated. Alternatively, we can used the robust estimator as follows:
 
@@ -159,7 +153,6 @@ summary(mod_Yt_rob)
 ```r
 plot(mod_Yt_rob)
 ```
-<div style="text-align:center"><img src="gmwm17-1.png" alt=" " width="100%">
-
+<div style="text-align:center"><img src="gmwm17-1.png" alt=" " width="100%"></div>
 
 In this case, the result are much closer to the ones obtained on `Xt` and illustrates the robustness of the estimator.

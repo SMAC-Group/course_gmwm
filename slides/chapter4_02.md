@@ -94,8 +94,8 @@ compare_wvar(wv_Xt, wv_Xt_rob, wv_Yt, wv_Yt_rob, split = FALSE)
 
 <div style="text-align:center"><img src="gmwm6-1.png" alt=" " width="100%">
 
----
+<p align="left">Clearly, the standard WV estimation is heavily impacted by the presence of outliers while the robust remains more or less stable.</p>
 
-Clearly, the standard WV estimation is heavily impacted by the presence of outliers while the robust remains more or less stable.
+
 
 ---

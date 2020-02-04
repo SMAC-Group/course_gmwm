@@ -61,6 +61,5 @@ It is also possible to create a standard "log-log" plot by simply using the func
 plot(wv_Xt)
 ```
 
-<div style="text-align:center"><img src="gmwm1-1.png" alt=" " width="95%">
+<div style="text-align:center"><img src="gmwm1-1.png" alt=" " width="95%"></div>
 
----

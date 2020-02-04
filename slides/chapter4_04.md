@@ -35,7 +35,7 @@ Xt = gen_gts(n = n, model = model)
 plot(wvar(Xt))
 ```
 
-<div style="text-align:center"><img src="gmwm18-1.png" alt=" " width="100%">
+<div style="text-align:center"><img src="gmwm18-1.png" alt=" " width="100%"></div>
 
 ---
 
@@ -72,7 +72,7 @@ summary(mod, inference = TRUE)
 plot(mod)     
 ```
 
-<div style="text-align:center"><img src="gmwm19-1.png" alt=" " width="100%">
+<div style="text-align:center"><img src="gmwm19-1.png" alt=" " width="100%"></div>
 
 
 ---
@@ -108,7 +108,7 @@ summary(mod1, inference = TRUE)
 plot(mod1)     
 ```
 
-<div style="text-align:center"><img src="gmwm20-1.png" alt=" " width="100%">
+<div style="text-align:center"><img src="gmwm20-1.png" alt=" " width="100%"></div>
 
 ---
 
@@ -118,7 +118,7 @@ The second model appears to provide a poorer fit then our first (correct) model.
 compare_models(mod, mod1, show.theo.wv = T,   
                facet.label = c('WN() + AR1() + RW()', 'WN() + AR1()'))
 ```
-<div style="text-align:center"><img src="gmwm21-1.png" alt=" " width="75%">
+<div style="text-align:center"><img src="gmwm21-1.png" alt=" " width="75%"></div>
 
 ---
 
@@ -138,7 +138,8 @@ The `gmwm` package also contains a method to select and rank models automaticall
 This method selection approach is implemented in the function `rank_models()`, which is used in the example below:
 
 ```{r, cache=TRUE}
-rank_models(WN() + AR1() + RW(), data = Xt, nested = TRUE, bootstrap = TRUE, B = 100)
+rank_models(WN() + AR1() + RW(), data = Xt, 
+            nested = TRUE, bootstrap = TRUE, B = 100)
 ```
 
 ```out
@@ -151,7 +152,6 @@ rank_models(WN() + AR1() + RW(), data = Xt, nested = TRUE, bootstrap = TRUE, B =
 ## 5. WN RW       77.2516   0.3091   77.5607        0.06
 ## 6. WN          82.4863   0.1150   82.6013        0.06
 ## 7. RW        1290.6724   0.0109 1290.6833        0.00
-
 ```
 
 ---
@@ -161,7 +161,8 @@ In this case, the model `WN() + AR1() + RW()` appears to provide the best fit am
 ---
 
 ```{r, cache=TRUE}
-rank_models(WN() + 2*AR1() + RW(), data = Xt, nested = TRUE, bootstrap = TRUE, B = 100)
+rank_models(WN() + 2*AR1() + RW(), data = Xt, 
+            nested = TRUE, bootstrap = TRUE, B = 100)
 ```
 
 ```out
@@ -183,10 +184,10 @@ rank_models(WN() + 2*AR1() + RW(), data = Xt, nested = TRUE, bootstrap = TRUE, B
 
 ---
 
-In this case also the suggested model remains the correct model, i.e. `WN() + AR1() + RW()`. However, this method selection approach is mainly indicative and more research is needed on the reliability of this method. In fact, all models having a Goodness-of-Fit (GoF) P-Values larger than, say, 5% should be considered as viable models. A possible approach is to select the model with the smallest number of parameters within these set of models having a GoF P-Values larger than 5%. In this case, the set of models is:
+In this case the suggested model becomes `WN() + 2*AR1()`. However, this method selection approach is mainly indicative and more research is needed on the reliability of this method. In fact, all models having a Goodness-of-Fit (GoF) P-Values larger than, say, 5% should be considered as viable models. A possible approach is to select the model with the smallest number of parameters within these set of models having a GoF P-Values larger than 5%. In this case, the set of models is:
 
-- \\(\mathcal{M}_1\\): `WN + AR1 + RW`
-- \\(\mathcal{M}_2\\): `WN + 2*AR1`
+- \\(\mathcal{M}_1\\): `WN + 2*AR1`
+- \\(\mathcal{M}_2\\): `WN + AR1 + RW`
 - \\(\mathcal{M}_3\\): `WN + 2*AR1 + RW`
 - \\(\mathcal{M}_4\\): `2*AR1 + RW`,
 
@@ -196,8 +197,8 @@ also leading to the choice of the model `WN + AR1 + RW` (since it has the smalle
 
 ```r
 # Models to be compared
-mod1 = gmwm(WN() + AR1() + RW(), Xt)
-mod2 = gmwm(WN() + 2*AR1(), Xt)
+mod1 = gmwm(WN() + 2*AR1(), Xt)
+mod2 = gmwm(WN() + AR1() + RW(), Xt)
 mod3 = gmwm(WN() + 2*AR1() + RW(), Xt)
 mod4 = gmwm(2*AR1() + RW(), Xt)
 ```
@@ -206,15 +207,9 @@ mod4 = gmwm(2*AR1() + RW(), Xt)
 
 ```r
 # Compare models graphically
-compare_models(mod1, mod2, mod3, mod4, show.theo.wv = T,   
-               facet.label = c('M1', 'M2', 'M3', 'M4'))
+compare_models(mod1, mod2, mod3, mod4, show.theo.wv = T, facet.label = c('M1', 'M2', 'M3', 'M4'))
 ```
 
-<div style="text-align:center"><img src="gmwm22-1.png" alt=" " width="80%">
+<div style="text-align:center"><img src="gmwm22-1.png" alt=" " width="70%"></div>
 
-
----
-
-It can clearly be observed that all models provide extremely similar fits and using the "smallest" (i.e. `M1` - `WN() + AR1() + RW()`) appears reasonable.
-
----
+It can clearly be observed that all models provide extremely similar fits and using the "smallest" (i.e. `M2` - `WN() + AR1() + RW()`) appears reasonable.
