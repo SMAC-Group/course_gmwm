@@ -4,6 +4,8 @@ type: slides
 
 # The Generalized Method of Wavelet Moments
 
+---
+
 The `gmwm` allows to estimate the parameters of various time series models in an efficient and consistent manner. The function which implements this method is called `gmwm()`. There are multiple arguments to this function which provide the users with a flexible range of options to tailor the estimation to their needs. This function relies on users supplying an error model which can be specified using a combination of all or a subset of the following processes:
 
 - `GM()`: a Gauss-Markov process;
@@ -22,7 +24,9 @@ It  must be underlined  that  a  first-order  auto-regressive  process  (`AR1()`
 
 ---
 
-To illustrate how the function `gmwm()` can be used, we start by considering the AR1() with measurement error we discussed previously.
+To illustrate how the function `gmwm()` can be used, we start by considering the (`AR1()`) with measurement error we discussed previously.
+
+---
 
 ```r
 library(gmwm)
@@ -81,6 +85,8 @@ model
 
 and therefore the GMWM provides reasonable estimated parameters. We can repeat the same process with the perturbed version of `Xt` which we called `Yt`:
 
+---
+
 ```r
 mod_Yt = gmwm(AR1() + WN(), Yt)
 summary(mod_Yt)
@@ -119,6 +125,8 @@ plot(mod_Yt)
 ---
 
 In this case, the estimation is quite poor and, for example, the variance of the `WN()` is largely overestimated. Alternatively, we can used the robust estimator as follows:
+
+---
 
 ```r
 mod_Yt_rob = gmwm(AR1() + WN(), Yt, robust = TRUE)
