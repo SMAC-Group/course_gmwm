@@ -87,7 +87,7 @@ mod = gmwm(RW(gamma2 = 0.1) + AR1(phi = 0.8, sigma2 = 0.1), savingrt, robust = T
 plot(mod)
 ```
 
-<div style="text-align:center"><img src="sav4-1.png" alt=" " width="90%">
+<div style="text-align:center"><img src="sav4-1.png" alt=" " width="90%"></div>
 
 ---
 
