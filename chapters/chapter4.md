@@ -79,14 +79,14 @@ Suggested reading:
 
 </exercise>
 
-<exercise id="6" title="Case Study: Hydrology">
+<exercise id="6" title="Example: Hydrology">
 
 <slides source="chapter4_07"> 
 </slides>
 
 </exercise>
 
-<exercise id="7" title="Case Study: Saving rates">
+<exercise id="7" title="Example: Saving rates">
 
 <slides source="chapter4_08"> 
 </slides>
