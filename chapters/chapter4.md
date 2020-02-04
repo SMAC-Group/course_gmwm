@@ -66,7 +66,7 @@ Suggested reading:
 
 <exercise id="4" title="The Generalized Method of Wavelet Moments">
 
-<slides source="chapter4_04"> 
+<slides source="chapter4_03"> 
 </slides>
 
 </exercise>
@@ -74,21 +74,21 @@ Suggested reading:
 
 <exercise id="5" title="Model Selection">
 
-<slides source="chapter4_05"> 
+<slides source="chapter4_04"> 
 </slides>
 
 </exercise>
 
 <exercise id="6" title="Case Study: Hydrology">
 
-<slides source="chapter4_07"> 
+<slides source="chapter4_05"> 
 </slides>
 
 </exercise>
 
 <exercise id="7" title="Case Study: Saving rates">
 
-<slides source="chapter4_08"> 
+<slides source="chapter4_06"> 
 </slides>
 
 </exercise>
