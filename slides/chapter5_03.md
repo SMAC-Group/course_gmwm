@@ -26,7 +26,7 @@ compare_wvar(wv, wv_rob, split = FALSE)
 
 ---
 
-The difference is clearly significant between the two estimators. Therefore, we will use the robust estimator for this example. Since we consider the model `3*AR1()` as the "best" model for our other dataset which considers the same sensor, we use this model as our initial guess:
+The difference is clearly significant between the two estimators. Therefore, we will use the robust estimator for this example. Since we consider the model `3*AR1()` as the "best" model for our previous dataset taken from the same sensor, we use this model as our initial guess:
 
 ```r
 mod1 = gmwm(3*AR1(), cont.imu1, robust = TRUE)

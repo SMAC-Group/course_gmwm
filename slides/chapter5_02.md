@@ -30,7 +30,7 @@ plot(wvar(Xt))
 
 ---
 
-This graph indicates that a `QN`, `RW` and/or `DR` processes do not appear to present the data at hand. As an initial model we consider `WN() + AR1()`:
+This graph indicates that a `QN`, `RW` and/or `DR` processes do not appear to be present the data at hand. As an initial model we consider `WN() + AR1()`:
 
 ```r
 # Model 1: WN + AR1()
@@ -126,7 +126,7 @@ compare_models(mod1, mod2, mod3, facet.label = c('AR1()', '2*AR1()', '3*AR1()'))
 
 ---
 
-It is unlikely that a more complex model will be beneficial. For example, a model with four `AR1()` does not appear to improve anything:
+It is unlikely that a more complex model will be more appropriate. For example, a model with four `AR1()` processes does not likely improve anything, nevertheless, it can be tested:
 
 ```r
 # Model 4: 4*AR1()

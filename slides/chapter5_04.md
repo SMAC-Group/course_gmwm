@@ -40,7 +40,7 @@ plot(mod1)
 
 ---
 
-Clearly, the fit is quite poor on the right-hand side of the WV. So we consider adding a `RW()` to improve the fit:
+Clearly, the fit is quite poor in the middle and on the right-hand side of the WV. So we consider adding a `RW()` to improve the fit:
 
 ```r
 mod2 = gmwm(QN() + WN() + AR1() + RW(), Yt)
