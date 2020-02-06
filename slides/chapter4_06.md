@@ -80,7 +80,7 @@ To replicate the results, use seed: 1337
 
 ---
 
-Although the implied WV stays within the confidence region of the empirical WV, the general trend is not very well followed by this model. However, this maybe well be due to the initialasation of parameters that converged to a local minimum. Hence, we initiate the parameters with fixed values and run the again the estimation. 
+Although the implied WV stays within the confidence region of the empirical WV, the general trend is not very well followed by this model. However, this maybe well be due to the initialization of parameters that converged to a local minimum. Hence, we initiate the parameters with fixed values and run again the estimation. 
 
 ```r
 mod = gmwm(RW(gamma2 = 0.1) + AR1(phi = 0.8, sigma2 = 0.1), savingrt, robust = TRUE)
