@@ -28,7 +28,7 @@ devtools::install_github("SMAC-Group/imudata")
 
 Note that the installation process may be a little slow.
 
-The sildes we will can be downloaded here:  [part I](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap4_1.pdf), and part II (coming soon). 
+The sildes we will can be downloaded here:  [part I](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap4_1.pdf), and [part II](https://github.com/SMAC-Group/course_smac_epfl/raw/master/pdf_slides/slides_chap4_2.pdf). 
 
 
 Main references:
