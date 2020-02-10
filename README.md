@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SMAC-Group/course_gmwm/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SMAC-Group/course_gmwm/binder)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/24f65aed-ac43-49a7-9ef9-599a8bb27582/deploy-status)](https://app.netlify.com/sites/gmwm/deploys)
 
