@@ -79,6 +79,8 @@ const Layout = ({ isHome, title, description, children }) => {
                                     
                                     
                                     
+                                    
+                                    
                                     <section className={classes.footerSection}>
                                     
                                         {meta.showProfileImage && (
@@ -91,6 +93,23 @@ const Layout = ({ isHome, title, description, children }) => {
                                         <p>{meta.bio}</p>
                                     
                                     </section>
+                                    
+                                    <section className={classes.footerSection}>
+                                        {meta.showProfileImage && (
+                                            <img
+                                                src="/davide.jpg"
+                                                alt=""
+                                                className={classes.profile}
+                                            />
+                                        )}
+
+                                        
+                                        <p> 
+                                        Davide Cucci is a Senior research associate.
+                                        </p>
+                                            
+                                    </section>
+                                    
                                      <div align="center">
                                     <section>
                                    
