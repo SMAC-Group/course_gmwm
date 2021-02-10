@@ -19,17 +19,7 @@ export default ({ data }) => {
     return (
         <Layout isHome>
             <Logo className={classes.logo} aria-label={siteMetadata.title} />
-            <section>
-                <div align="center">
-                <h1 className={classes.subtitle}>Inference for large-scale time series with application to sensor fusion</h1>
-                </div>
-                <div align="center">
-                <h4 className={classes.subtitle}> The content accessible on this site was produced as part of the PhD course</h4>
-                <h4 className={classes.subtitle}> "Inference for large-scale time series with application to sensor fusion" given at EPFL in January 2020.</h4>
-                
-                <h4 className={classes.subtitle}> All documents, exercises and the website have been prepared by Prof. Stéphane Guerrier, Prof. Jan Skaloud, Davide Cucci and Lionel Voirol. </h4>
-                </div>
-            </section>
+
             {chapters.map(({ slug, title, description }) => (
                 <section key={slug} className={classes.chapter}>
                     <h2 className={classes.chapterTitle}>
@@ -43,9 +33,13 @@ export default ({ data }) => {
                         </Link>
                     </p>
                 </section>
+                
             ))}
         </Layout>
+        
     )
+
+    
 }
 
 export const pageQuery = graphql`
