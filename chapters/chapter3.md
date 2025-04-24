@@ -73,7 +73,7 @@ Let \\(X_t\\) be an WN with variance \\(\sigma^2\\) and length \\(N\\).
 - Write an R function that returns the ML estimator for \\(\sigma^2\\), i.e.
 
 $$
-\hat\sigma^2 = N^{-1}\sum^{N} X_t^2
+\hat\sigma^2 = N^{-1}\sum_{t = 1}^{N} X_t^2
 $$
 - Write an R function that computes the AVAR of the input (`avar` function) and estimates \\(\hat \sigma^2\\) (use Equation 3.10 and 3.11). 
 - Chose a value for \\(\sigma^2\\) and \\(N\\), e.g., \\(1\\) and \\(1000\\), and generate \\(M\\) realization of \\(X_t\\).

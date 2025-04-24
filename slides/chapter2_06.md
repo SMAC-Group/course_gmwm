@@ -85,4 +85,4 @@ In the next section, we will consider a more appropriate approach. Finally, let'
 check(fit)
 ```
 <div style="text-align:center"><img src="chap2_17-1.png" alt=" " width="75%">
----
+

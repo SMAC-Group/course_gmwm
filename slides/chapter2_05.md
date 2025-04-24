@@ -65,4 +65,3 @@ Note that we use the option `demean = FALSE` as the process we simulated is a ze
 
 ```
 
----

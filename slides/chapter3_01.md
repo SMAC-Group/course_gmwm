@@ -8,10 +8,11 @@ type: slides
 
 # The avar function
 
-Two estimators are implemented in the `avar` package. A simple example with simulated data is given here:
+Two estimators are implemented in the `avar` package. Here is a simple example on simulated data:
 
 ```r
-# Simulate white noise
+# Simulate white noise 
+library(avar); library(simts)
 n = 10^4   
 Xt = gen_gts(n = n, WN(sigma2 = 1))
 
@@ -57,4 +58,3 @@ lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
 
 <div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
 
----

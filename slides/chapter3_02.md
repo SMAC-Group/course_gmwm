@@ -120,5 +120,3 @@ plot(my_imu_av)
 ```
 
 <div style="text-align:center"><img src="av7_2-1.png" alt=" " width="90%">
-
----

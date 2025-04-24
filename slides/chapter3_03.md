@@ -282,4 +282,3 @@ plot(navchip_gyro_z_mod, decomp = TRUE)
 
 However, the fit is quite poor in this case. This example illustrates the limit of the AVLR method and, in the next chapter, we will revisit this example the **Generalized Method of Wavelet Moments (GMWM)**.
 
----
