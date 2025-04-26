@@ -79,7 +79,7 @@ Most of the required packages are available directly from [Comprehensive R Archi
 To install them, you can run the following command:
 
 ```R
-install.packages(c("avar","simts", "wv", "navigation", "gmwmx2"))
+install.packages(c("avar", "simts", "wv", "navigation", "gmwmx2"))
 ``` 
 
 The package `gmwm` is currently only available on GitHub. To install it, first install the `devtools` package by running the following command in `R`: 
@@ -100,10 +100,11 @@ Make sure that the installation succeeded by checking the installation logs. You
 Once this is done, you can install the required packages with:
 
 ```r
+devtools::install_github("https://github.com/SMAC-Group/imudata")
 devtools::install_github("https://github.com/SMAC-Group/gmwm")
 ```
 
-You should see something like:
+This will take some time... At the end, you should see something like:
 
 
 ```out
