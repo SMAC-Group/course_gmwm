@@ -100,27 +100,32 @@ Suggested reading:
 # Simulation
 
 - Simulate an AR(1) with the parameters and sample size of your choice.
-- Write a function that computes $\hat{Q}_n(\bm{\theta})$ as defined in the previous slide with $\bm{\Omega} = \mathbf{I}$.
+- Write a function that computes <span
+class="math inline"><em>Q̂</em><sub><em>n</em></sub>(<strong>θ</strong> )</span> as defined in the previous slide with <span
+class="math inline"><strong>Ω</strong> = <strong>I</strong></span>.
 - Find the GMWM estimator for the data you simulate in Step 1. Are the estimated parameters close to the correct ones?
-- Compare the results with the ones obtained with the \texttt{gmwm()} function.
+- Compare the results with the ones obtained with the <code>gmwm()</code> function.
 
 # Estimation
 
-- Show that the theoretical WV for the model WN() + RW() can be expressed as $\bm{\nu}(\bm{\theta}) = \mathbf{X}\bm{\theta}$.
+- Show that the theoretical WV for the model WN() + RW() can be expressed as <span
+class="math inline"><strong>ν</strong>(<strong>θ</strong>) = <strong>X</strong><strong>θ</strong></span>.
 - In this case, show that the GMWM has a closed form solution.
-- Simulate a time series with the parameter $\sigma^2 = 4$, $\gamma^2 = 0.01$ and $T = 10^4$. Compare the AVLR, GMWM (based on the \texttt{gmwm()} function) and the GMWM (closed form). Which estimator is the best one?
-- Perform a simulation study to compare the three estimators. Are your results consistent with the ones of \cite{guerrier2016theoretical} (presented in the previous slide)?
+- Simulate a time series with the parameter <span class="math inline"><em>σ</em><sup>2</sup> = 4</span>, <span
+class="math inline"><em>γ</em><sup>2</sup> = 0.01</span> and <span
+class="math inline"><em>T</em> = 10<sup>4</sup></span>. Compare the AVLR, GMWM (based on the <code>gmwm()</code> function) and the GMWM (closed form). Which estimator is the best one?
+- Perform a simulation study to compare the three estimators. Are your results consistent with the ones of Guerrier, 2016 (presented in the previous slide)?
 
 # Econometic time series
 
-- Plot the US saving rates data-set (get the data with \texttt{data(savingrt, package = "simts")})
-- Find a suitable model of the type ``random walk + noise'' using the \texttt{gmwm()}. 
+- Plot the US saving rates data-set (get the data with <code>data(savingrt, package = "simts")</code>)
+- Find a suitable model of the type ``random walk + noise'' using the <code>gmwm()</code>. 
 - Compare the robust and non-robust estimators.
 
  	
 # Inertial sensor
 
-- Find a suitable for error model to describe the signal of ln200 gyroscope. You can get the data as follows: \lstinputlisting[basicstyle=\tiny, language=r]{ln200.r}
-- Same question for a KVH1750 accelerometer: \lstinputlisting[basicstyle=\tiny, language=r]{kvh.r}
+- Find a suitable for error model to describe the signal of ln200 gyroscope. You can get the data as follows: <code>data(ln200.gyro)</code>
+- Same question for a KVH1750 accelerometer: <code>data(kvh1750.acc)</code>
 
 </exercise>
