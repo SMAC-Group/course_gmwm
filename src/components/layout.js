@@ -62,7 +62,7 @@ const Layout = ({ isHome, title, description, children }) => {
                 </div>
                 <div align="center">
                 <h4 className={classes.subtitle}> The content accessible on this site was produced as part of the PhD course</h4>
-                <h4 className={classes.subtitle}> "Inference for large-scale time series with application to sensor fusion" given at EPFL in January 2020.</h4>
+                <h4 className={classes.subtitle}> "Inference for large-scale time series with application to sensor fusion" given at EPFL in April 2025.</h4>
                 
                 <h4 className={classes.subtitle}> All documents, exercises and the website have been prepared by Prof. Stéphane Guerrier, Prof. Jan Skaloud, Davide Cucci and Lionel Voirol. </h4>
                 </div>
