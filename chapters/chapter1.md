@@ -121,7 +121,7 @@ library(gmwm)
 ```
 
 
-Then you have successfully installed and loaded all required softwares! Congratulations!
+Then you have successfully installed and loaded all required software! Congratulations!
 
 
 </exercise>
