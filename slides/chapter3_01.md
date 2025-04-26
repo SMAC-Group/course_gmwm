@@ -58,3 +58,4 @@ lines(Xt_av$levels, 1/Xt_av$levels, lwd = 2, col = "red")
 
 <div style="text-align:center"><img src="av2-1.png" alt=" " width="68%">
 
+---

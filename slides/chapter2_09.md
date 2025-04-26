@@ -95,3 +95,5 @@ predict(model_copper_arma32, n.head = 90, show_last = 300)
 ```
 
 <div style="text-align:center"><img src="chap2_23_7-1.png" alt=" " width="90%">
+
+---

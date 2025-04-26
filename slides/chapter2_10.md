@@ -70,3 +70,5 @@ predict(mod, n.ahead = 24)
 ---
 
 As you can see, the forecasted values (and confidence intervals) appear to reasonably follow the pattern of the observed time series confirming that the fitted model could be a possible candidate to consider for the considered time series data.
+
+---

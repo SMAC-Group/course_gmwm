@@ -178,3 +178,5 @@ compare_models(mod2, mod3, mod4, mod5, facet.label = c('M2', 'M3', 'M4', 'M5'))
 ---
 
 The last model: `QN() + WN() + 3*AR1() + RW()` appears to provide the best fit. However, the model `QN() + WN() + 2*AR1() + RW()` is a reasonable alternative.
+
+---

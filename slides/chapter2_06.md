@@ -86,3 +86,4 @@ check(fit)
 ```
 <div style="text-align:center"><img src="chap2_17-1.png" alt=" " width="75%">
 
+---

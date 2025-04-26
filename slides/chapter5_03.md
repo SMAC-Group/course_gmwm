@@ -132,3 +132,5 @@ summary(mod3, inference = TRUE)
 ```
 
 The result is clearly different and indicates that a robust approach is likely to be beneficial.
+
+---

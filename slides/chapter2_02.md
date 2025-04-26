@@ -63,5 +63,5 @@ plot(Xt)
 ```
 <div style="text-align:center"><img src="chap2_2-1.png" alt=" " width="85%">
 
-
+---
 

@@ -118,4 +118,6 @@ To replicate the results, use seed: 1337
 
 ---
 
-Now the resulting correspondences between the empirical and implied WV are in a good agreement over large number of scales, especially in the region where the confidence of WV is high. Hence, we consider the resulting value of parameters to be plausible for modelling. 
+Now the resulting correspondences between the empirical and implied WV are in a good agreement over large number of scales, especially in the region where the confidence of WV is high. Hence, we consider the resulting value of parameters to be plausible for modelling.
+
+---

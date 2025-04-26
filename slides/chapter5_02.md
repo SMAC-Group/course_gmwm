@@ -210,3 +210,5 @@ compare_models(mod3, mod4, mod5,
 ```
 
 <div style="text-align:center"><img src="gmwm30-1.png" alt=" " width="90%"></div>
+
+---

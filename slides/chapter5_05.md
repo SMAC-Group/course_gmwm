@@ -143,3 +143,5 @@ Objective Function: 28.4606
 ```
 
 This final model `QN() + 4*AR1() + RW()` appears to fit the data quite well.
+
+---

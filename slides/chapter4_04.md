@@ -213,3 +213,5 @@ compare_models(mod1, mod2, mod3, mod4, show.theo.wv = T, facet.label = c('M1', '
 <div style="text-align:center"><img src="gmwm22-1.png" alt=" " width="70%"></div>
 
 It can clearly be observed that all models provide extremely similar fits and using the "smallest" (i.e. `M2` - `WN() + AR1() + RW()`) appears reasonable.
+
+---

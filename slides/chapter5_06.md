@@ -135,3 +135,4 @@ compare_models(mod1, mod2, mod3, show.theo.wv = T, facet.label = c('WN', 'AR1', 
 
 The model `AR1()` appears to be the most suitable model for this data.
 
+---

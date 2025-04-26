@@ -116,3 +116,4 @@ corr_analysis(lynx_gts)
 
 The seasonal behavior also appears in the ACF plot but we see that it decreases in a sinusoidal fashion as the lag increases hinting that an AR(p) model could be a potential candidate for the time series. Looking at the PACF plot on the right we can see that a few partial autocorrelations appear to be significant up to lag `h=11`. Therefore an AR(11) model could be a possibly good candidate to explain (and predict) this time series. We will revisit this example in the next section.
 
+---

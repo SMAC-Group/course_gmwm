@@ -29,3 +29,4 @@ lynx_select = select(AR(16), lynx_gts, include.mean = TRUE)
 
 This suggests that an AR(2) or an AR(11) are interesting models.
 
+---

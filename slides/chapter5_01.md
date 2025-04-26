@@ -126,4 +126,5 @@ data("ln200.accel")
 plot(wvar(ln200.accel))
 ```
 <div style="text-align:center"><img src="gmwm14-1.png" alt=" " width="75%">
+
 ---
