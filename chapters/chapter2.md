@@ -26,7 +26,7 @@ The sildes we will can be downloaded [here](https://github.com/SMAC-Group/course
 Main references:
 
 1. *Time series analysis and its applications: with R examples*, Shumway & Stoffer, Fourth Edition, 2017, Springer, online version available [here](https://www.stat.pitt.edu/stoffer/tsa4/tsa4.pdf).
-2. *Applied Time Series Analysis with `R`*, Guerrier, *et al.* 2019, online version available [here](http://ts.smac-group.com).
+2. *Applied Time Series Analysis with `R`*, Guerrier, *et al.* 2019, online version available [here](https://smac-group.github.io/ts/).
 
 </exercise>
 
