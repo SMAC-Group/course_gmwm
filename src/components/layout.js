@@ -76,7 +76,7 @@ const Layout = ({ isHome, title, description, children }) => {
                                     <section className={classes.footerSection}>
                                         {meta.showProfileImage && (
                                             <img
-                                                src="/jan_skaloud.png"
+                                                src="/skaloud252.jpg"
                                                 alt=""
                                                 className={classes.profile}
                                             />
@@ -84,7 +84,7 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                         
                                         <p> 
-                                        Jan Skaloud is a senior scientist and lecturer at the Swiss Federal Institute of Technology Lausanne (EPFL) and Adjunct Professor at the Department of Geomatics Engineering at The University of Calgary. His research is related to methodologies and applications in sensor fusion for autonomous navigation, precise positioning, attitude determination and mobile mapping. He is a member and active participant in numerous international professional and scientific organisations in this field. 
+                                        Jan Skaloud  is a professor at the École Polytechnique Fédérale de Lausanne (EPFL) with teaching responsibilities in estimation and sensor integration. He has developed several patented technologies and for his work in navigation and mapping received prestigious awards from international scientific societies and journals. His current research focuses on advanced topics in satellite and inertial navigation, sensor calibration, and modern broadband mapping techniques.
                                         </p>
                                             
                                     </section>
